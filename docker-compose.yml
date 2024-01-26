@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  app:
+    container_name: college-hack-api
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=dev
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    container_name: mymongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

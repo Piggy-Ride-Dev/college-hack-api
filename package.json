@@ -1,0 +1,39 @@
+{
+  "name": "college-hack-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc",
+    "start": "node dist/app.js",
+    "dev": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc && node dist/app.js",
+    "generate-docs": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Piggy-Ride-Dev/college-hack-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Piggy-Ride-Dev/college-hack-api/issues"
+  },
+  "homepage": "https://github.com/Piggy-Ride-Dev/college-hack-api#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.8.0",
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^20.11.7",
+    "ts-node": "^10.9.2",
+    "tsoa": "^6.0.1",
+    "typescript": "^5.3.3"
+  }
+}
