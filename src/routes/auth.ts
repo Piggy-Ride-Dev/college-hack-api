@@ -1,21 +1,41 @@
 import express from "express";
-import * as googleAuth from "../utils/googleAuth";
+import {
+  getGoogleAuthUrl,
+  getUserInfo,
+  getGoogleAccessToken,
+} from "../utils/googleAuth";
+import { createUser, getUserByGoogleId } from "../models/User";
 
 const router = express.Router();
 
 router.get("/auth/google", (req, res) => {
-  const url = googleAuth.getGoogleAuthUrl();
+  const url = getGoogleAuthUrl();
   res.redirect(url);
 });
 
 router.get("/auth/google/callback", async (req, res) => {
-  const code = req.query.code;
+  const authToken = req.query.code;
   try {
-    const user = await googleAuth.getGoogleUser(code as string);
+    const credentials = await getGoogleAccessToken(authToken as string);
+    const { access_token: accessToken, refresh_token: refreshToken } =
+      credentials;
 
-    // TODO: Save user to database
+    const user = await getUserInfo(accessToken as string);
+    const userInDb = await getUserByGoogleId(user.id);
+
+    if (!userInDb) {
+      await createUser({
+        name: user.given_name,
+        surname: user.family_name,
+        picture: user.picture,
+        googleId: user.id,
+        email: user.email,
+      });
+    }
+
     res.send("Authentication successful");
   } catch (error) {
+    console.error("Error during Google auth callback:", error);
     res.status(500).send("Authentication failed");
   }
 });
