@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export interface SectionUser {
   sectionID: string;
   semester: number;
@@ -8,6 +10,7 @@ export interface SectionUser {
 export interface User {
   id?: string;
   name: string;
+  googleId: string;
   email: string;
   hashedPassword: string;
   college: string;
@@ -15,3 +18,6 @@ export interface User {
   sections: SectionUser[];
   gpa: number;
 }
+
+const userSchema = new mongoose.Schema<User>({});
+export const User = mongoose.model("User", userSchema);
