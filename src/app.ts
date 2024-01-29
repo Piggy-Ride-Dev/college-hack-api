@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import mongoose from "mongoose";
+import authRouter from "./routes/auth";
 import { connectDB } from "./db";
 
 require("dotenv").config();
@@ -16,6 +17,8 @@ connectDB();
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "docs", "index.html"));
 });
+
+app.use(authRouter);
 
 app.get("/check-db", (req: Request, res: Response) => {
   const state = mongoose.connection.readyState;
