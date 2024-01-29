@@ -1,12 +1,23 @@
 import { Request, Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
 
-export const isAuthenticated = (
+export const authenticateToken = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  if (req.isAuthenticated()) {
-    return next();
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).send("User not authenticated");
   }
-  res.status(401).send("User not authenticated");
+
+  jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
+    if (err) {
+      return res.status(403).send("Invalid token");
+    }
+    req.user = user;
+    next();
+  });
 };
