@@ -64,5 +64,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: college-hack-api
+          app-name: "college-hack-api"
           images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/myapp:${{ github.sha }}
