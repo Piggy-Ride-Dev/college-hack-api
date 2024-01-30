@@ -8,7 +8,7 @@ name: Deploy to Azure
     branches:
       - main
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,19 +17,9 @@ jobs:
           node-version: "20"
       - run: npm ci
       - run: npm test
-  docs:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-      - run: npm ci
-      - run: npm run docs
 
   build-and-push:
-    needs: test
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,7 +37,7 @@ jobs:
           docker push ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/myapp:${{ github.sha }}
 
   deploy:
-    needs: [docs, build-and-push]
+    needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Log in to Azure

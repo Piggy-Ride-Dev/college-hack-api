@@ -7,11 +7,6 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=dev
-    depends_on:
-      - mongo
+      - MONGODB_URI=${MONGODB_URI}
     networks:
       - app-network
-
-networks:
-  app-network:
-    driver: bridge
