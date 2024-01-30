@@ -8,7 +8,7 @@
     "build": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc",
     "start": "node dist/app.js",
     "dev": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc && node dist/app.js",
-    "generate-docs": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html"
+    "docs": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html"
   },
   "repository": {
     "type": "git",
