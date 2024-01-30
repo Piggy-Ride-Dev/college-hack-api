@@ -12,19 +12,6 @@ services:
     networks:
       - app-network
 
-  mongo:
-    container_name: mymongo
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      - app-network
-
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  mongo-data:
