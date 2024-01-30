@@ -8,7 +8,7 @@ import { connectDB } from "./db";
 
 require("dotenv").config();
 
-const app: express.Application = express();
+export const app: express.Application = express();
 
 app.use(bodyParser.json());
 
