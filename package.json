@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc",
+    "dev": "tsc && node dist/app.js",
     "start": "node dist/app.js",
-    "dev": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc && node dist/app.js",
+    "build": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc",
     "docs": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html"
   },
   "repository": {
