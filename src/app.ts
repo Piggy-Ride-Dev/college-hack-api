@@ -2,7 +2,6 @@ import "dotenv/config";
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import path from "path";
-import mongoose from "mongoose";
 import authRouter from "./routes/auth";
 import { connectDB } from "./db";
 
@@ -19,17 +18,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use(authRouter);
-
-app.get("/check-db", (req: Request, res: Response) => {
-  const state = mongoose.connection.readyState;
-
-  if (state === 1) {
-    res.send("Database connection is OK");
-  } else {
-    console.error("Database connection failed");
-    res.status(500).send("Database connection failed");
-  }
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

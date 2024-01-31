@@ -1,12 +1,5 @@
 import { model, Schema, Document } from "mongoose";
 
-export interface SectionUser {
-  sectionID: string;
-  semester: number;
-  year: number;
-  grade: number;
-  isFinished: boolean;
-}
 export interface User extends Document {
   id?: string;
   name: string;
@@ -18,6 +11,14 @@ export interface User extends Document {
   program: string;
   sections: SectionUser[];
   gpa: number;
+}
+
+export interface SectionUser {
+  sectionID: string;
+  semester: number;
+  year: number;
+  grade: number;
+  isFinished: boolean;
 }
 
 export interface UserCreate {
@@ -64,4 +65,8 @@ export function createUser(user: UserCreate): Promise<User> {
 
 export function getUserByGoogleId(id: string): Promise<User | null> {
   return User.findOne({ googleId: id });
+}
+
+export function getUserById(id: string): Promise<User | null> {
+  return User.findById(id);
 }

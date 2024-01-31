@@ -39,7 +39,7 @@ export const getGoogleAccessToken = async (code: string) => {
   }
 };
 
-export const getUserInfo = async (accessToken: string) => {
+export const getGoogleUserInfo = async (accessToken: string) => {
   const googleUserInfoUrl = "https://www.googleapis.com/oauth2/v2/userinfo";
   try {
     const response: any = await fetch(googleUserInfoUrl, {
