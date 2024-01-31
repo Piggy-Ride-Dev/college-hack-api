@@ -3,7 +3,7 @@ import {
   getUserByGoogleId,
   getUserById,
 } from "../models/User";
-import { getGoogleUserInfo } from "../services/googleAuth";
+import { getGoogleUserInfo } from "../services/GoogleAuth";
 
 export async function createUser(accessToken: string) {
   const googleUserInfo = await getGoogleUserInfo(accessToken);

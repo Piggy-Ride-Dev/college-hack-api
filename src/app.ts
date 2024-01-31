@@ -2,7 +2,7 @@ import "dotenv/config";
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import path from "path";
-import authRouter from "./routes/auth";
+import authRouter from "./routes/Auth";
 import { connectDB } from "./db";
 
 require("dotenv").config();

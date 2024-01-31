@@ -2,8 +2,8 @@ require("dotenv").config();
 
 import express from "express";
 import jwt from "jsonwebtoken";
-import { getGoogleAuthUrl, getGoogleAccessToken } from "../services/googleAuth";
-import { authenticateToken } from "../middlewares/auth";
+import { getGoogleAuthUrl, getGoogleAccessToken } from "../services/GoogleAuth";
+import { authenticateToken } from "../middlewares/Auth";
 import { createUser, getUser } from "../controllers/User";
 
 const jwtSecret = process.env.JWT_SECRET;
