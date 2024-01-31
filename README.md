@@ -31,7 +31,7 @@ npm install
 3. Create a `.env` file in the root directory and add the following environment variables:
 
 ```sh
-MONGO_URI="..."
+MONGODB_URI="..."
 PORT=3000
 ```
 

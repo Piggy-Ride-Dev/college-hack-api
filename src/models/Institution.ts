@@ -4,15 +4,15 @@ export interface College {
 }
 
 export interface Program {
-  id?: string; // MongoDB ID represented as string in TypeScript
+  id?: string;
   name: string;
-  collegeID: string; // Representing primitive.ObjectID as string
+  collegeID: string;
   code: string;
   numOfSemesters: number;
 }
 
 export interface Teacher {
-  id?: string; // MongoDB ID represented as string in TypeScript
+  id?: string;
   name: string;
   email: string;
 }
