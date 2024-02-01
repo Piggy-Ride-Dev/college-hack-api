@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/auth/google", (req, res) => {
   const url = getGoogleAuthUrl();
-  res.redirect(url);
+  res.send({ url: url });
 });
 
 router.get("/auth/google/callback", async (req, res) => {
@@ -22,7 +22,7 @@ router.get("/auth/google/callback", async (req, res) => {
     const jwtToken = jwt.sign({ user: user }, jwtSecret as string, {
       expiresIn: "1h",
     });
-    res.send({ jwtToken: jwtToken, user: user });
+    res.send({ token: jwtToken, user: user });
   } catch (error) {
     res.status(500).send("Authentication failed");
   }
@@ -30,6 +30,7 @@ router.get("/auth/google/callback", async (req, res) => {
 
 router.get("/user/:id", authenticateToken, async (req, res) => {
   const user = await getUser(req.params.id);
+  // todo retornar 404 se o usuário não existir
   return res.send(user);
 });
 

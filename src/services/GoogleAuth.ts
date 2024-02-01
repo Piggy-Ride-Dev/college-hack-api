@@ -14,7 +14,9 @@ dotenv.config();
 
 const CLIENT_ID = process.env.GOOGLE_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
-const REDIRECT_URI = "http://localhost:3000/auth/google/callback";
+const REDIRECT_URI =
+  "https://college-hack-api.azurewebsites.net//auth/google/callback";
+// Tratar ambiente de prod e de dev nas rotas
 
 const oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
