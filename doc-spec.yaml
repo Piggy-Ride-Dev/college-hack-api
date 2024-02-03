@@ -76,6 +76,56 @@ paths:
           description: User not found
         "500":
           description: Server error
+  /documents/upload:
+    post:
+      summary: Upload one or more files to the server
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Files uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Files uploaded successfully
+        "413":
+          description: Error related to file extension
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: File extension not allowed
+        "500":
+          description: Error during the upload process
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Multer uploading error
 components:
   schemas:
     User:
