@@ -31,7 +31,7 @@ router.get("/auth/google/callback", async (req, res) => {
 router.get("/user/:id", authenticateToken, async (req, res) => {
   const user = await getUser(req.params.id);
   // todo retornar 404 se o usuário não existir
-  return res.send(user);
+  return res.send({ user: user });
 });
 
 export default router;

@@ -41,7 +41,7 @@ PORT=3000
 npm run dev
 ```
 
-Visit http://localhost:3000/ to view the API documentation.
+Visit / to view the API documentation.
 
 ## Authors
 
