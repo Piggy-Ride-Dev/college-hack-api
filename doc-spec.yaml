@@ -49,6 +49,33 @@ paths:
 
         "500":
           description: Authentication failed
+  /user/{id}:
+    get:
+      summary: Return a user
+      description: Return a user by their ID in MongoDB, not the Google ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the user to retrieve.
+      responses:
+        "200":
+          description: A user object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid user ID
+        "404":
+          description: User not found
+        "500":
+          description: Server error
 components:
   schemas:
     User:

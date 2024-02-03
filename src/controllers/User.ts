@@ -5,7 +5,7 @@ import {
 } from "../models/User";
 import { getGoogleUserInfo } from "../services/GoogleAuth";
 
-export async function createUser(accessToken: string) {
+export async function createUserController(accessToken: string) {
   const googleUserInfo = await getGoogleUserInfo(accessToken);
   let user = await getUserByGoogleId(googleUserInfo.id);
 
@@ -23,6 +23,6 @@ export async function createUser(accessToken: string) {
   return user;
 }
 
-export async function getUser(id: string) {
+export async function getUserController(id: string) {
   return await getUserById(id);
 }
