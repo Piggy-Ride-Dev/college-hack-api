@@ -32,3 +32,5 @@ router.post("/documents/upload", (req, res) => {
     return res.status(200).send({ message: "Files uploaded successfully" });
   });
 });
+
+export default router;
