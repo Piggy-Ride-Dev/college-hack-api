@@ -10,3 +10,7 @@ services:
       - MONGODB_URI=${MONGODB_URI}
     networks:
       - app-network
+    volumes:
+      - ./dist:/app/dist
+networks:
+  app-network:
