@@ -64,16 +64,9 @@ describe("GET /user/:id", () => {
 });
 
 describe("PATCH /user/:id", () => {
-  // it("should return 200 and user data for a valid user ID", async () => {
-  //   const mockValidID = new mongoose.Types.ObjectId().toHexString();
-  //   const mockUser = { id: mockValidID, name: "Test User" };
-  //   mockGetUserController.mockResolvedValue(mockUser);
-
-  //   const response = await request(app).get(`/user/${mockValidID}`);
-
-  //   expect(response.status).toBe(200);
-  //   expect(response.body).toEqual({ user: mockUser });
-  // });
+  // TODO:
+  // Valid user data
+  // Invalid user data
 
   it("should return 404 when no user is found for a valid ID", async () => {
     const mockValidID = new mongoose.Types.ObjectId().toHexString();
