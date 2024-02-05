@@ -48,3 +48,5 @@ router.patch("/user/:id", authenticateToken, async (req, res) => {
     return res.status(500).send(`Internal server error: ${error}`);
   }
 });
+
+export default router;
