@@ -46,6 +46,9 @@ paths:
                     description: The JWT token
                   user:
                     $ref: "#/components/schemas/User"
+                  isFirstAccess:
+                    type: boolean
+                    description: Whether the user is accessing the app for the first time
 
         "500":
           description: Authentication failed
@@ -76,6 +79,39 @@ paths:
           description: User not found
         "500":
           description: Server error
+
+    patch:
+      summary: Update a user
+      description: Return a user updated by their ID in MongoDB, not the Google ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the user to retrieve.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdate"
+      responses:
+        "200":
+          description: A user object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid user ID
+        "404":
+          description: User not found
+        "500":
+          description: Server error
 components:
   schemas:
     User:
@@ -87,6 +123,9 @@ components:
         name:
           type: string
           description: The user's name
+        surname:
+          type: string
+          description: The user's surname
         email:
           type: string
           description: The user's email
@@ -107,6 +146,30 @@ components:
           items:
             $ref: "#/components/schemas/SectionUser"
           description: The user's sections
+        gpa:
+          type: number
+          description: The user's GPA
+    UserUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user's name
+        surname:
+          type: string
+          description: The user's surname
+        email:
+          type: string
+          description: The user's email
+        picture:
+          type: string
+          description: The user's profile picture
+        college:
+          type: string
+          description: The user's college
+        program:
+          type: string
+          description: The user's program
         gpa:
           type: number
           description: The user's GPA
