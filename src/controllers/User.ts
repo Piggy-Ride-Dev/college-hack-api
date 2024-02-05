@@ -2,12 +2,14 @@ import {
   createUser as createUserDB,
   getUserByGoogleId,
   getUserById,
+  updateUser,
 } from "../models/User";
 import { getGoogleUserInfo } from "../services/GoogleAuth";
 
 export async function createUserController(accessToken: string) {
   const googleUserInfo = await getGoogleUserInfo(accessToken);
   let user = await getUserByGoogleId(googleUserInfo.id);
+  let isFirstAccess = false;
 
   if (!user) {
     const userResp = await createUserDB({
@@ -18,11 +20,16 @@ export async function createUserController(accessToken: string) {
       email: googleUserInfo.email,
     });
     user = userResp;
+    isFirstAccess = true;
   }
 
-  return user;
+  return { user, isFirstAccess };
 }
 
 export async function getUserController(id: string) {
   return await getUserById(id);
+}
+
+export async function updateUserController(id: string, user: any) {
+  return await updateUser(id, user);
 }

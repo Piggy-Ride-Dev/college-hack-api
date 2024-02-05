@@ -31,9 +31,10 @@ export interface UserCreate {
 
 export interface UserUpdate {
   name?: string;
+  surname?: string;
   college?: string;
   program?: string;
-  sections?: SectionUser[];
+  picture?: string;
   gpa?: number;
 }
 
@@ -69,4 +70,8 @@ export function getUserByGoogleId(id: string): Promise<User | null> {
 
 export function getUserById(id: string): Promise<User | null> {
   return User.findById(id);
+}
+
+export function updateUser(id: string, user: UserUpdate): Promise<User | null> {
+  return User.findByIdAndUpdate(id, user);
 }
