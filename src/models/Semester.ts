@@ -1,5 +1,32 @@
 import { Schema, model, Document } from "mongoose";
-import { Section } from "./Institution";
+import { WeekDay } from "../utils/types";
+
+export type ProcessingFileStatus =
+  | "pending"
+  | "processing"
+  | "completed"
+  | "failed";
+export type SectionStatus = "active" | "completed" | "dropped" | "failed";
+
+export interface Schedule {
+  day: WeekDay;
+  time: Date;
+  location: string;
+}
+
+export interface Section {
+  id?: string;
+  code: string;
+  courseID: string;
+  teacherID: string;
+  processingFileStatus: ProcessingFileStatus;
+  status: SectionStatus;
+  schedules: {
+    lecture: Schedule | null;
+    lab: Schedule | null;
+    office: Schedule | null;
+  };
+}
 
 export interface Semester extends Document {
   userID: string;
