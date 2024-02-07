@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 import express from "express";
 import { mongo } from "mongoose";
 import { authenticateToken } from "../middlewares/Auth";
