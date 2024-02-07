@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get("/auth/google", (req, res) => {
   const url = getGoogleAuthUrl();
-  res.send({ url: url });
+  res.redirect(url);
 });
 
 router.get("/auth/google/callback", async (req, res) => {
@@ -21,7 +21,21 @@ router.get("/auth/google/callback", async (req, res) => {
     const jwtToken = jwt.sign({ user: user }, jwtSecret as string, {
       expiresIn: "1h",
     });
-    res.send({ token: jwtToken, ...user });
+
+    const cookieData = {
+      token: jwtToken,
+      userId: user.user.id,
+      isFirstAccess: user.isFirstAccess,
+    };
+
+    res.cookie("college-hack-data", JSON.stringify(cookieData), {
+      httpOnly: true,
+    });
+
+    const frontendUrl = "http://localhost:3000/";
+    // todo: change this to the frontend url
+
+    res.redirect(frontendUrl);
   } catch (error) {
     res.status(500).send("Authentication failed");
   }
