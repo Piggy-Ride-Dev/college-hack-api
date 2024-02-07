@@ -31,5 +31,13 @@ export function createSemester(semester: Semester): Promise<Semester> {
 }
 
 export function getSemesterById(id: string): Promise<Semester | null> {
-  return Semester.findById(id).populate("courses");
+  return Semester.findById(id).populate("sections");
+}
+
+export function getSemestersByUserID(userID: string): Promise<Semester[]> {
+  return Semester.find({ userID }).populate("sections");
+}
+
+export function deleteSemester(id: string): Promise<Semester | null> {
+  return Semester.findByIdAndDelete(id);
 }

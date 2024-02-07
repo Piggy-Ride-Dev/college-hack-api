@@ -28,7 +28,7 @@ export interface Course {
   programID: string;
 }
 
-export interface Section extends Course {
+export interface Section {
   id?: string;
   courseID: string;
   teacherID: string;
