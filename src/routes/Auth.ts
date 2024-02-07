@@ -8,6 +8,14 @@ import { createUserController } from "../controllers/User";
 const jwtSecret = process.env.JWT_SECRET;
 const router = express.Router();
 
+router.get("/auth/token", (req, res) => {
+  const cookieData = req.cookies["college-hack-data"];
+  if (!cookieData) {
+    return res.status(401).send("Authenticate first");
+  }
+  res.send(JSON.parse(cookieData));
+});
+
 router.get("/auth/google", (req, res) => {
   const url = getGoogleAuthUrl();
   res.redirect(url);
