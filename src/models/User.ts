@@ -9,16 +9,7 @@ export interface User extends Document {
   email: string;
   college: string;
   program: string;
-  sections: SectionUser[];
   gpa: number;
-}
-
-export interface SectionUser {
-  sectionID: string;
-  semester: number;
-  year: number;
-  grade: number;
-  isFinished: boolean;
 }
 
 export interface UserCreate {
@@ -46,15 +37,6 @@ const userSchema = new Schema<User>({
   email: { type: String, required: true },
   college: { type: String, required: false },
   program: { type: String, required: false },
-  sections: [
-    {
-      sectionID: { type: String, required: true },
-      semester: { type: Number, required: true },
-      year: { type: Number, required: true },
-      grade: { type: Number, required: true },
-      isFinished: { type: Boolean, required: true },
-    },
-  ],
   gpa: { type: Number, required: false },
 });
 
