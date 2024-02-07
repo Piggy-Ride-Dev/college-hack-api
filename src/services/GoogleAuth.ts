@@ -1,5 +1,5 @@
+import "dotenv/config";
 import { OAuth2Client } from "google-auth-library";
-import dotenv from "dotenv";
 
 interface GoogleUserInfo {
   id: string;
@@ -10,19 +10,21 @@ interface GoogleUserInfo {
   locale: string;
 }
 
-dotenv.config();
+require("dotenv").config();
 
 const CLIENT_ID = process.env.GOOGLE_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
-const BASE_URL =
-  process.env.ENV == "prod"
-    ? "https://college-hack-api.azurewebsites.net"
-    : `http://localhost:${process.env.PORT}`;
+const IS_PROD = process.env.ENV === "prod";
+const BASE_URL = IS_PROD
+  ? "https://college-hack-api.azurewebsites.net"
+  : `http://localhost:${process.env.PORT}`;
 const REDIRECT_URI = `${BASE_URL}/auth/google/callback`;
 
 const oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 export const getGoogleAuthUrl = () => {
+  if (!IS_PROD && !process.env.PORT)
+    console.log("Port ENV missing", REDIRECT_URI);
   return oauth2Client.generateAuthUrl({
     access_type: "offline",
     prompt: "consent",
