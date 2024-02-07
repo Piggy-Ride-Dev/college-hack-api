@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express, { Request, Response } from "express";
+import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import path from "path";
 import authRouter from "./routes/Auth";
@@ -10,6 +11,7 @@ require("dotenv").config();
 export const app: express.Application = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 connectDB();
 

@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/Piggy-Ride-Dev/college-hack-api#readme",
   "dependencies": {
+    "@types/cookie-parser": "^1.4.6",
     "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "google-auth-library": "^9.5.0",
