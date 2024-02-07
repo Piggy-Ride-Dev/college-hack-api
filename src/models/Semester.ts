@@ -6,6 +6,8 @@ export interface Semester extends Document {
   courses: Section[];
   number: number;
   year: number;
+  start: Date | null;
+  end: Date | null;
   grade: number;
 }
 
@@ -16,6 +18,18 @@ const semesterSchema = new Schema<Semester>({
     required: true,
   },
   number: { type: Number, required: true },
+  start: { type: Date, required: false },
+  end: { type: Date, required: false },
   year: { type: Number, required: true },
   grade: { type: Number, required: true },
 });
+
+export const Semester = model("Semester", semesterSchema);
+
+export function createSemester(semester: Semester): Promise<Semester> {
+  return Semester.create(semester);
+}
+
+export function getSemesterById(id: string): Promise<Semester | null> {
+  return Semester.findById(id).populate("courses");
+}
