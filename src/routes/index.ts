@@ -6,7 +6,7 @@ import documentRoutes from "./documentRoutes";
 
 const router = express.Router();
 
-router.use("/users", userRoutes);
+router.use("/user", userRoutes);
 router.use("/auth", authRoutes);
 router.use("/semester", semesterRoutes);
 router.use("/document", documentRoutes);
