@@ -35,7 +35,6 @@ export interface Semester extends Document {
   year: number;
   start: Date | null;
   end: Date | null;
-  grade: number;
 }
 
 const semesterSchema = new Schema<Semester>({
@@ -48,7 +47,6 @@ const semesterSchema = new Schema<Semester>({
   start: { type: Date, required: false },
   end: { type: Date, required: false },
   year: { type: Number, required: true },
-  grade: { type: Number, required: true },
 });
 
 export const Semester = model("Semester", semesterSchema);
