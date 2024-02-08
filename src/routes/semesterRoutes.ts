@@ -5,7 +5,7 @@ import { getSemestersController } from "../controllers/Semester";
 
 const router = express.Router();
 
-router.get("/semester/:userid", authenticateToken, async (req, res) => {
+router.get("/:userid", authenticateToken, async (req, res) => {
   if (!mongo.ObjectId.isValid(req.params.userId)) {
     return res.status(400).send("Invalid user id");
   }

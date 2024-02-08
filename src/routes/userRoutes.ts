@@ -6,7 +6,7 @@ import { UserUpdate } from "../models/User";
 
 const router = express.Router();
 
-router.get("/user/:id", authenticateToken, async (req, res) => {
+router.get("/:id", authenticateToken, async (req, res) => {
   if (!mongo.ObjectId.isValid(req.params.id)) {
     return res.status(400).send("Invalid user id");
   }
@@ -22,7 +22,7 @@ router.get("/user/:id", authenticateToken, async (req, res) => {
   }
 });
 
-router.patch("/user/:id", authenticateToken, async (req, res) => {
+router.patch("/:id", authenticateToken, async (req, res) => {
   if (!mongo.ObjectId.isValid(req.params.id)) {
     return res.status(400).send("Invalid user id");
   }

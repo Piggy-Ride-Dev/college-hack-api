@@ -4,7 +4,7 @@ import { multipleUpload } from "../middlewares/Upload";
 
 const router = express.Router();
 
-router.post("/documents/upload", (req, res) => {
+router.post("/upload", (req, res) => {
   multipleUpload(req, res, (err) => {
     if (err instanceof multer.MulterError) {
       return res
