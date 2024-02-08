@@ -5,14 +5,14 @@ export interface Program extends Document {
   name: string;
   collegeID: string;
   code: string;
-  numOfSemesters: number;
+  numOfSemesters?: number;
 }
 
 const programSchema = new Schema<Program>({
   name: { type: String, required: true },
   collegeID: { type: String, required: true },
   code: { type: String, required: true },
-  numOfSemesters: { type: Number, required: true },
+  numOfSemesters: { type: Number, required: false },
 });
 
 export const Program = model("Program", programSchema);
