@@ -36,6 +36,7 @@ router.get("/auth/google/callback", async (req, res) => {
 
     res.cookie("college-hack-data", JSON.stringify(cookieData), {
       httpOnly: true,
+      secure: true,
     });
 
     const frontendUrl = "http://localhost:3000/";
