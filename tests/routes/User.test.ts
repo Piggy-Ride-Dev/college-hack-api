@@ -1,6 +1,6 @@
 import request from "supertest";
 import express from "express";
-import router from "../../src/routes/User";
+import router from "../../src/routes/userRoutes";
 import mongoose from "mongoose";
 import * as UserController from "../../src/controllers/User";
 

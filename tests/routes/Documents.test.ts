@@ -1,6 +1,6 @@
 import request from "supertest";
 import express from "express";
-import router from "../../src/routes/Documents";
+import router from "../../src/routes/documentRoutes";
 
 jest.mock("../../src/middlewares/Upload.ts", () => ({
   multipleUpload: jest.fn(),
