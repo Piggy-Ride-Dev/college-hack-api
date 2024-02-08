@@ -1,0 +1,952 @@
+[
+  {
+    "code": "DAN",
+    "name": "3D Animation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ESC",
+    "name": "911 & Emergency Services Communications",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "AUC",
+    "name": "Academic Upgrading",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ACC",
+    "name": "Accounting",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ACF",
+    "name": "Accounting & Finance",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "APP",
+    "name": "Accounting & Payroll",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ACV",
+    "name": "Acting for Camera & Voice",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "AIE",
+    "name": "Advanced Investigations & Enforcement",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ANI",
+    "name": "Animation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "AFD",
+    "name": "Art Fundamentals",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "AIG",
+    "name": "Artificial Intelligence",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ASU",
+    "name": "Arts and Science – University Transfer",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ASM",
+    "name": "Asset Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "AVO",
+    "name": "Aviation Operations",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ASE",
+    "name": "Aviation Safety",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BSA",
+    "name": "Bachelor of Engineering (Software Engineering)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BHS",
+    "name": "Behavioural Sciences",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BTA",
+    "name": "Biotechnology – Advanced",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BMK",
+    "name": "Brand Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "RTVR",
+    "name": "Broadcasting – Radio",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "RTVT",
+    "name": "Broadcasting – Television",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BTS",
+    "name": "Building Systems Engineering Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BBS",
+    "name": "Business",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BAF",
+    "name": "Business Administration – Financial Planning",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BHR",
+    "name": "Business Administration – Human Resources",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BAB",
+    "name": "Business Administration – International Business",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BAG",
+    "name": "Business Administration – Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BAM",
+    "name": "Business Administration – Marketing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BAO",
+    "name": "Business Administration – Purchasing & Supply Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BAN",
+    "name": "Business Analytics",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BTT",
+    "name": "Business Information Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BEN",
+    "name": "Business Management – Entrepreneurship & Innovation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BIN",
+    "name": "Business – Insurance",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BUI",
+    "name": "Business – International Business",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BMT",
+    "name": "Business – Marketing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CAQC",
+    "name": "Cannabis Regulation & Quality Assurance",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CHY",
+    "name": "Chemical Engineering Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CLT",
+    "name": "Chemical Laboratory Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CLP",
+    "name": "Chemical Laboratory Technology – Pharmaceutical",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CYC",
+    "name": "Child & Youth Care",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ECEK",
+    "name": "Child Development Practitioner",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CVL",
+    "name": "Civil Engineering Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CVT",
+    "name": "Civil Engineering Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CRQC",
+    "name": "Clinical Research",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CAA",
+    "name": "Cloud Architecture & Administration",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ECT",
+    "name": "Computer Engineering Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CPP",
+    "name": "Computer Programming",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CPA",
+    "name": "Computer Programming & Analysis",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CSN",
+    "name": "Computer Systems Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CTY",
+    "name": "Computer Systems Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CSPC",
+    "name": "Cosmetic Science",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CTM",
+    "name": "Cosmetic Techniques & Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CAB",
+    "name": "Creative Advertising",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CYT",
+    "name": "Cybersecurity & Threat Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "DAD",
+    "name": "Database Application Developer",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "DMM",
+    "name": "Digital & Social Media Marketing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "DNM",
+    "name": "Documentary & Non-Fiction Media Production",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "DFI",
+    "name": "Documentary Filmmaking Institute",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ECE",
+    "name": "Early Childhood Education",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ECYA",
+    "name": "Early Childhood Education (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EMA",
+    "name": "Electromechanical Engineering Technology – Automation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EEN",
+    "name": "Electronics Engineering Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EET",
+    "name": "Electronics Engineering Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EVL",
+    "name": "Environmental Landscape Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ETM",
+    "name": "Environmental Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EMT",
+    "name": "Environmental Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EMK",
+    "name": "Esports Marketing Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EST",
+    "name": "Esthetician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MST",
+    "name": "Esthetics & Medical Spa Therapies",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EMP",
+    "name": "Event & Media Production",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EVC",
+    "name": "Event Management – Creative Design",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FAA",
+    "name": "Fashion Arts",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FAB",
+    "name": "Fashion Business",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FBM",
+    "name": "Fashion Business Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FST",
+    "name": "Fashion Studies",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FIP",
+    "name": "Financial Planning",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FCA",
+    "name": "Financial Services Compliance Administration",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FSA",
+    "name": "Financial Services – Client Services",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FNT",
+    "name": "Financial Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FPN",
+    "name": "Fire Protection Engineering Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FPT",
+    "name": "Fire Protection Engineering Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FFP",
+    "name": "Firefighter, Pre-Service Education and Training",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FHP",
+    "name": "Fitness & Health Promotion",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FLS",
+    "name": "Flight Services",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FSO",
+    "name": "Flight Services – Operations & Cabin Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FDN",
+    "name": "Floral Design",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FEA",
+    "name": "Fraud Examination & Forensic Accounting",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GAA",
+    "name": "Game Art & Animation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GEA",
+    "name": "General Arts – English for Academic Purposes",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GAP",
+    "name": "General Arts – One Year Certificate",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GBG",
+    "name": "Global Business Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GBD",
+    "name": "Global Hospitality Business Development",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GOM",
+    "name": "Global Hospitality Operations Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GHL",
+    "name": "Global Hospitality Sustainable Leadership",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GRM",
+    "name": "Government Relations",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GRA",
+    "name": "Graphic Design",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "FPR",
+    "name": "Honours Bachelor of Aviation Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BBP",
+    "name": "Honours Bachelor of Behavioural Psychology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BCD",
+    "name": "Honours Bachelor of Child Development",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BACF",
+    "name": "Honours Bachelor of Commerce – Accounting & Finance",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BBM",
+    "name": "Honours Bachelor of Commerce – Business Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BTM",
+    "name": "Honours Bachelor of Commerce – Business Technology Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CFP",
+    "name": "Honours Bachelor of Commerce – Financial Planning",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BHRM",
+    "name": "Honours Bachelor of Commerce – Human Resources Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BMI",
+    "name": "Honours Bachelor of Commerce – International Business Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BMRK",
+    "name": "Honours Bachelor of Commerce – Marketing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BCMM",
+    "name": "Honours Bachelor of Communications & Media",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "CIA",
+    "name": "Honours Bachelor of Crime & Intelligence Analysis",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "DSA",
+    "name": "Honours Bachelor of Data Science and Analytics",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BDI",
+    "name": "Honours Bachelor of Design in Interactive Media",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BHAD",
+    "name": "Honours Bachelor of Health Administration",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BDM",
+    "name": "Honours Bachelor of Information Technology Design and Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "IFS",
+    "name": "Honours Bachelor of Information Technology – Cybersecurity",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "INS",
+    "name": "Honours Bachelor of Interdisciplinary Studies",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BMHA",
+    "name": "Honours Bachelor of Mental Health and Addiction",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BBTA",
+    "name": "Honours Bachelor of Science – Biotechnology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BSN",
+    "name": "Honours Bachelor of Science – Nursing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BSNB",
+    "name": "Honours Bachelor of Science – Nursing (Bridge)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "BSD",
+    "name": "Honours Bachelor of Technology – Software Development",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "DTR",
+    "name": "Honours Bachelor of Therapeutic Recreation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "HFC",
+    "name": "Hospitality Foundations",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "HTM",
+    "name": "Hospitality – Hotel & Restaurant Services Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "HRM",
+    "name": "Human Resources Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ILS",
+    "name": "Illustration",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ICM",
+    "name": "Immigration Case Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "IMP",
+    "name": "Independent Music Production",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "IPS",
+    "name": "Independent Songwriting & Performance",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "IMH",
+    "name": "Infant & Early Child Mental Health",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "INM",
+    "name": "Interactive Media Design",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "IBS",
+    "name": "International Business Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "TCS",
+    "name": "International Transportation & Customs",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "JRN",
+    "name": "Journalism",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "JAS",
+    "name": "Justice Administration Services",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "JASY",
+    "name": "Justice Administration Services (Articulated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LCK",
+    "name": "Law Clerk",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LCKA",
+    "name": "Law Clerk (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LAT",
+    "name": "Liberal Arts University Transfer",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LIT",
+    "name": "Library & Information Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LITA",
+    "name": "Library & Information Technician (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MKM",
+    "name": "Marketing Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MATD",
+    "name": "Mechanical Engineering Technician (Tool Design)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MBT",
+    "name": "Mechanical Engineering Technology – Building Sciences",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MIT",
+    "name": "Mechanical Engineering Technology – Industrial Design",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MTCP",
+    "name": "Mechanical Technician – CNC Programming",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MATT",
+    "name": "Mechanical Techniques (Tool & Die/Mould Making) ",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MDN",
+    "name": "Medical Esthetics Nursing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MHI",
+    "name": "Mental Health Intervention",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "NPM",
+    "name": "Non-Profit & Social Sector Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "OTP",
+    "name": "Occupational Therapist Assistant and Physiotherapist Assistant",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "EXS",
+    "name": "Office Administration – Executive",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "MES",
+    "name": "Office Administration – Health Services",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LES",
+    "name": "Office Administration – Legal",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "OPTC",
+    "name": "Opticianry",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PLE",
+    "name": "Paralegal",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PLEA",
+    "name": "Paralegal (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PSWC",
+    "name": "Personal Support Worker",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "RAQC",
+    "name": "Pharmaceutical Regulatory Affairs & Quality Operations",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "LAW",
+    "name": "Police Foundations",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PND",
+    "name": "Practical Nursing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PBS",
+    "name": "Pre-Business",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PHS",
+    "name": "Pre-Health Sciences Pathway to Advanced Diplomas & Degrees",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PRA",
+    "name": "Professional Accounting Practice",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PSL",
+    "name": "Professional Selling",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PME",
+    "name": "Project Management – Environmental",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PMC",
+    "name": "Project Management – Information Technology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PAD",
+    "name": "Public Administration",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "PRC",
+    "name": "Public Relations – Corporate Communications",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "RPA",
+    "name": "Real Property Administration (Assessment & Appraisal)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "RPAA",
+    "name": "Real Property Administration (Assessment & Appraisal) (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SSW",
+    "name": "Social Service Worker",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SSWA",
+    "name": "Social Service Worker (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SSWG",
+    "name": "Social Service Worker – Gerontology",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SSWI",
+    "name": "Social Service Worker – Immigrants and Refugees",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SSIA",
+    "name": "Social Service Worker – Immigrants and Refugees (Accelerated)",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SEM",
+    "name": "Sports, Entertainment & Event Marketing",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SCM",
+    "name": "Supply Chain Management – Global Logistics",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "SMB",
+    "name": "Sustainable Business Management",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "UBS",
+    "name": "Sustainable Urban & Transportation Planning",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ELI317",
+    "name": "TESL 1",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "ELI321",
+    "name": "TESL 2",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "TEC",
+    "name": "Technical Communication",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "GTB",
+    "name": "Tourism – Services Management – Global Tourism Business Specialization",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "TIS",
+    "name": "Tourism – Services Management – Travel Services Specialization",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "TTO",
+    "name": "Tourism – Travel Operations",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "VTA",
+    "name": "Veterinary Assistant",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "VTE",
+    "name": "Veterinary Technician",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "VCC",
+    "name": "Visual Content Creation",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "VFT",
+    "name": "Visual Effects for Film & Television",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "VMA",
+    "name": "Visual Merchandising Arts",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  },
+  {
+    "code": "WSP",
+    "name": "Workplace Safety & Prevention",
+    "collegeID": "65c3d385bf30bcfa4989619d"
+  }
+]

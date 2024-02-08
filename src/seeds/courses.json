@@ -1,0 +1,32 @@
+[
+  {
+    "code": "APS145",
+    "name": "Applied Problem Solving",
+    "programs": ["65c3df26356397dced8c2d55"]
+  },
+  {
+    "code": "COM101",
+    "name": "Communication Across Contexts",
+    "programs": ["65c3df26356397dced8c2d55"]
+  },
+  {
+    "code": "COM111",
+    "name": "Communication Across Contexts(Enriched)",
+    "programs": ["65c3df26356397dced8c2d55"]
+  },
+  {
+    "code": "CPR101",
+    "name": "Computer Principles for Programmers",
+    "programs": ["65c3df26356397dced8c2d55"]
+  },
+  {
+    "code": "IPC144",
+    "name": "Introduction to Programming Using C",
+    "programs": ["65c3df26356397dced8c2d55"]
+  },
+  {
+    "code": "OPS102",
+    "name": "Operating Systems for Programmers",
+    "programs": ["65c3df26356397dced8c2d55"]
+  }
+]
