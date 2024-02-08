@@ -1,7 +1,7 @@
 import express from "express";
 import { mongo } from "mongoose";
-import { authenticateToken } from "../middlewares/Auth";
-import { getSemestersController } from "../controllers/Semester";
+import { authenticateToken } from "../middlewares/mw-auth";
+import { getSemestersController } from "../controllers/ctrl-semester";
 
 const router = express.Router();
 

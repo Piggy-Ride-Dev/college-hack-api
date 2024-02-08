@@ -1,8 +1,8 @@
 import request from "supertest";
 import express from "express";
-import router from "../../src/routes/documentRoutes";
+import router from "@/routes/route-document";
 
-jest.mock("../../src/middlewares/Upload.ts", () => ({
+jest.mock("@/middlewares/mw-upload.ts", () => ({
   multipleUpload: jest.fn(),
 }));
 
@@ -14,9 +14,11 @@ beforeAll(() => {
   jest.clearAllMocks();
 });
 
-describe("POST /documents/upload", () => {
+describe("POST /document/upload", () => {
   it("should return 200 when files are uploaded successfully", async () => {
-    const response = await request(app).post("/documents/upload");
+    const response = await request(app)
+      .post("/document/upload")
+      .attach("files", "tests/assets/PMC444.pdf");
     expect(response.status).toBe(200);
     expect(response.body).toEqual({ message: "Files uploaded successfully" });
   });

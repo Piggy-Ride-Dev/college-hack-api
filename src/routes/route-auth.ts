@@ -1,7 +1,10 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { getGoogleAuthUrl, getGoogleAccessToken } from "../services/GoogleAuth";
-import { createUserController } from "../controllers/User";
+import {
+  getGoogleAuthUrl,
+  getGoogleAccessToken,
+} from "../services/svc-google-auth";
+import { createUserController } from "../controllers/ctrl-user";
 
 const jwtSecret = process.env.JWT_SECRET;
 const router = express.Router();

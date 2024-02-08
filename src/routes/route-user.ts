@@ -1,8 +1,11 @@
 import express from "express";
 import { mongo } from "mongoose";
-import { authenticateToken } from "../middlewares/Auth";
-import { getUserController, updateUserController } from "../controllers/User";
-import { UserUpdate } from "../models/User";
+import { authenticateToken } from "../middlewares/mw-auth";
+import {
+  getUserController,
+  updateUserController,
+} from "../controllers/ctrl-user";
+import { UserUpdate } from "../models/mdl-user";
 
 const router = express.Router();
 

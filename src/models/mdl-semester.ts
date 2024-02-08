@@ -1,5 +1,5 @@
 import { Schema, model, Document } from "mongoose";
-import { WeekDay } from "../utils/types";
+import { WeekDay } from "../utils/util-types";
 
 export type ProcessingFileStatus =
   | "pending"

@@ -3,8 +3,8 @@ import {
   getUserByGoogleId,
   getUserById,
   updateUser,
-} from "../models/User";
-import { getGoogleUserInfo } from "../services/GoogleAuth";
+} from "../models/mdl-user";
+import { getGoogleUserInfo } from "../services/svc-google-auth";
 
 export async function createUserController(accessToken: string) {
   const googleUserInfo = await getGoogleUserInfo(accessToken);

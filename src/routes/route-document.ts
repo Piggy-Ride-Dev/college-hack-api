@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { multipleUpload } from "../middlewares/Upload";
+import { multipleUpload } from "../middlewares/mw-upload";
 
 const router = express.Router();
 

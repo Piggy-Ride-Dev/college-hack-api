@@ -1,15 +1,15 @@
 import request from "supertest";
 import express from "express";
-import router from "../../src/routes/userRoutes";
+import router from "@/routes/route-user";
 import mongoose from "mongoose";
-import * as UserController from "../../src/controllers/User";
+import * as UserController from "@/controllers/ctrl-user";
 
-jest.mock("../../src/controllers/User", () => ({
+jest.mock("@/controllers/ctrl-user", () => ({
   getUserController: jest.fn(),
 }));
 const mockGetUserController = UserController.getUserController as jest.Mock;
 
-jest.mock("../../src/middlewares/Auth", () => ({
+jest.mock("@/middlewares/mw-auth", () => ({
   authenticateToken: jest.fn((req, res, next) => next()),
 }));
 
