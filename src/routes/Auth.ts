@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 import express from "express";
 import jwt from "jsonwebtoken";
 import { getGoogleAuthUrl, getGoogleAccessToken } from "../services/GoogleAuth";
