@@ -1,33 +1,33 @@
-require("dotenv").config();
-
-import express from "express";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { getGoogleAuthUrl, getGoogleAccessToken } from "../services/GoogleAuth";
-import { createUserController } from "../controllers/User";
+import { createUser } from "./ctrl-user";
+import {
+  getGoogleAuthUrl,
+  getGoogleAccessToken,
+} from "../services/svc-google-auth";
 
 const jwtSecret = process.env.JWT_SECRET;
-const router = express.Router();
 
-router.get("/auth/token", (req, res) => {
+export const getToken = (req: Request, res: Response) => {
   const cookieData = req.cookies["college-hack-data"];
   if (!cookieData) {
     return res.status(401).send("Authenticate first");
   }
   res.send(JSON.parse(cookieData));
-});
+};
 
-router.get("/auth/google", (req, res) => {
+export const redirectToGoogleAuth = (req: Request, res: Response) => {
   const url = getGoogleAuthUrl();
   res.redirect(url);
-});
+};
 
-router.get("/auth/google/callback", async (req, res) => {
+export const handleGoogleCallback = async (req: Request, res: Response) => {
   const authToken = req.query.code;
   try {
     const credentials = await getGoogleAccessToken(authToken as string);
-    const user = await createUserController(credentials.access_token as string);
+    const user = await createUser(credentials.access_token as string);
     const jwtToken = jwt.sign({ user: user }, jwtSecret as string, {
-      expiresIn: "1h",
+      expiresIn: "24h",
     });
 
     const cookieData = {
@@ -38,6 +38,7 @@ router.get("/auth/google/callback", async (req, res) => {
 
     res.cookie("college-hack-data", JSON.stringify(cookieData), {
       httpOnly: true,
+      secure: true,
     });
 
     const frontendUrl = "http://localhost:3000/";
@@ -47,6 +48,4 @@ router.get("/auth/google/callback", async (req, res) => {
   } catch (error) {
     res.status(500).send("Authentication failed");
   }
-});
-
-export default router;
+};

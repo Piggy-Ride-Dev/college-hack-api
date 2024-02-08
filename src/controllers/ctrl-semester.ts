@@ -1,16 +1,13 @@
-import express from "express";
+import { Request, Response } from "express";
+import { getSemestersByUserID } from "../models/mdl-semester";
 import { mongo } from "mongoose";
-import { authenticateToken } from "../middlewares/Auth";
-import { getSemestersController } from "../controllers/Semester";
 
-const router = express.Router();
-
-router.get("/semester/:userid", authenticateToken, async (req, res) => {
+export const getSemestersByUser = async (req: Request, res: Response) => {
   if (!mongo.ObjectId.isValid(req.params.userId)) {
     return res.status(400).send("Invalid user id");
   }
   try {
-    const semesters = await getSemestersController(req.params.userId);
+    const semesters = await getSemestersByUserID(req.params.userId);
     if (!semesters) {
       return res.status(404).send("Semesters not found");
     }
@@ -18,6 +15,4 @@ router.get("/semester/:userid", authenticateToken, async (req, res) => {
   } catch (error) {
     return res.status(500).send(`Internal server error: ${error}`);
   }
-});
-
-export default router;
+};

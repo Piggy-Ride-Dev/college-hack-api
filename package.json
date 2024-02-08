@@ -21,19 +21,20 @@
   },
   "homepage": "https://github.com/Piggy-Ride-Dev/college-hack-api#readme",
   "dependencies": {
-    "@types/cookie-parser": "^1.4.6",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "google-auth-library": "^9.5.0",
-    "mongoose": "^8.1.1"
+    "mongoose": "^8.1.1",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-typescript": "^7.23.3",
     "@redocly/cli": "^1.8.0",
     "@types/body-parser": "^1.19.5",
+    "@types/cookie-parser": "^1.4.6",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.11",
     "@types/jsonwebtoken": "^9.0.5",
@@ -44,7 +45,9 @@
     "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tsoa": "^6.0.1",
     "typescript": "^5.3.3"
   }

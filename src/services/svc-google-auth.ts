@@ -10,8 +10,6 @@ interface GoogleUserInfo {
   locale: string;
 }
 
-require("dotenv").config();
-
 const CLIENT_ID = process.env.GOOGLE_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
 const IS_PROD = process.env.ENV === "prod";

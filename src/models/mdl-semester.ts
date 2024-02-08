@@ -1,5 +1,5 @@
 import { Schema, model, Document } from "mongoose";
-import { WeekDay } from "../utils/types";
+import { WeekDay } from "../utils/util-types";
 
 export type ProcessingFileStatus =
   | "pending"
@@ -35,7 +35,6 @@ export interface Semester extends Document {
   year: number;
   start: Date | null;
   end: Date | null;
-  grade: number;
 }
 
 const semesterSchema = new Schema<Semester>({
@@ -48,7 +47,6 @@ const semesterSchema = new Schema<Semester>({
   start: { type: Date, required: false },
   end: { type: Date, required: false },
   year: { type: Number, required: true },
-  grade: { type: Number, required: true },
 });
 
 export const Semester = model("Semester", semesterSchema);
@@ -62,7 +60,7 @@ export function getSemesterById(id: string): Promise<Semester | null> {
 }
 
 export function getSemestersByUserID(userID: string): Promise<Semester[]> {
-  return Semester.find({ userID }).populate("sections");
+  return Semester.find({ userID: userID }).populate("sections");
 }
 
 export function deleteSemester(id: string): Promise<Semester | null> {

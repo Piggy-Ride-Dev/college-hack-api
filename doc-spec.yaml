@@ -79,39 +79,56 @@ paths:
           description: User not found
         "500":
           description: Server error
-
-    patch:
-      summary: Update a user
-      description: Return a user updated by their ID in MongoDB, not the Google ID.
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-          description: The ID of the user to retrieve.
+  /documents/upload:
+    post:
+      summary: Upload one or more files to the server
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: "#/components/schemas/UserUpdate"
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
       responses:
         "200":
-          description: A user object
+          description: Files uploaded successfully
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  user:
-                    $ref: "#/components/schemas/User"
-        "400":
-          description: Invalid user ID
-        "404":
-          description: User not found
+                  message:
+                    type: string
+                    example: Files uploaded successfully
+        "413":
+          description: Error related to file extension
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: File extension not allowed
         "500":
-          description: Server error
+          description: Error during the upload process
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Multer uploading error
 components:
   schemas:
     User:

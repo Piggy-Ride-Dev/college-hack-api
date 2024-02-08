@@ -14,6 +14,9 @@ export const authenticateToken = (
   }
 
   jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
+    if (err && err.name === "TokenExpiredError") {
+      return res.status(401).send("Token expired");
+    }
     if (err) {
       return res.status(403).send("Invalid token");
     }
