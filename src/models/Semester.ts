@@ -60,7 +60,7 @@ export function getSemesterById(id: string): Promise<Semester | null> {
 }
 
 export function getSemestersByUserID(userID: string): Promise<Semester[]> {
-  return Semester.find({ userID }).populate("sections");
+  return Semester.find({ userID: userID }).populate("sections");
 }
 
 export function deleteSemester(id: string): Promise<Semester | null> {
