@@ -1,12 +1,15 @@
+import { Request, Response } from "express";
 import {
   createUser as createUserDB,
   getUserByGoogleId,
   getUserById,
-  updateUser,
+  updateUser as updateUserDB,
+  UserUpdate,
 } from "../models/mdl-user";
 import { getGoogleUserInfo } from "../services/svc-google-auth";
+import { mongo } from "mongoose";
 
-export async function createUserController(accessToken: string) {
+export const createUser = async (accessToken: string) => {
   const googleUserInfo = await getGoogleUserInfo(accessToken);
   let user = await getUserByGoogleId(googleUserInfo.id);
   let isFirstAccess = false;
@@ -24,12 +27,40 @@ export async function createUserController(accessToken: string) {
   }
 
   return { user, isFirstAccess };
-}
+};
 
-export async function getUserController(id: string) {
-  return await getUserById(id);
-}
+export const getUser = async (req: Request, res: Response) => {
+  if (!mongo.ObjectId.isValid(req.params.id)) {
+    return res.status(400).send("Invalid user id");
+  }
 
-export async function updateUserController(id: string, user: any) {
-  return await updateUser(id, user);
-}
+  try {
+    const user = await getUserById(req.params.id);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    return res.send({ user: user });
+  } catch (error) {
+    return res.status(500).send(`Internal server error: ${error}`);
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  if (!mongo.ObjectId.isValid(req.params.id)) {
+    return res.status(400).send("Invalid user id");
+  }
+
+  if (!req.body.user) {
+    return res.status(400).send("Invalid user data");
+  }
+
+  try {
+    const user = await updateUserDB(req.params.id, req.body.user as UserUpdate);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    return res.send({ user: user });
+  } catch (error) {
+    return res.status(500).send(`Internal server error: ${error}`);
+  }
+};

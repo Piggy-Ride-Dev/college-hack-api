@@ -1,23 +1,13 @@
 import express from "express";
-import { mongo } from "mongoose";
 import { authenticateToken } from "../middlewares/mw-auth";
-import { getSemestersController } from "../controllers/ctrl-semester";
+import * as SemesterController from "../controllers/ctrl-semester";
 
 const router = express.Router();
 
-router.get("/:userId", authenticateToken, async (req, res) => {
-  if (!mongo.ObjectId.isValid(req.params.userId)) {
-    return res.status(400).send("Invalid user id");
-  }
-  try {
-    const semesters = await getSemestersController(req.params.userId);
-    if (!semesters) {
-      return res.status(404).send("Semesters not found");
-    }
-    return res.send({ semesters });
-  } catch (error) {
-    return res.status(500).send(`Internal server error: ${error}`);
-  }
-});
+router.get(
+  "/:userId",
+  authenticateToken,
+  SemesterController.getSemestersByUser
+);
 
 export default router;
