@@ -41,8 +41,7 @@ export const handleGoogleCallback = async (req: Request, res: Response) => {
       secure: true,
     });
 
-    const frontendUrl = "http://localhost:3000/";
-    // todo: change this to the frontend url
+    const frontendUrl = process.env.FRONTEND_URL as string;
 
     res.redirect(frontendUrl);
   } catch (error) {
