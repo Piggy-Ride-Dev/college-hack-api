@@ -1,6 +1,6 @@
 import express from "express";
-import { authenticateToken } from "../middlewares/mw-auth";
-import * as SemesterController from "../controllers/ctrl-semester";
+import { authenticateToken } from "../middlewares/auth/mw-auth";
+import * as SemesterController from "../gateways/semester/gtw-semester";
 
 const router = express.Router();
 

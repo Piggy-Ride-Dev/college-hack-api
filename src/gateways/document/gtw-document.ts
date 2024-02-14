@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import multer from "multer";
-import { multipleUpload } from "../middlewares/mw-upload";
+import { multipleUpload } from "../../middlewares/upload/mw-upload";
 
 export const uploadMultipleFiles = async (req: Request, res: Response) => {
   multipleUpload(req, res, (err) => {

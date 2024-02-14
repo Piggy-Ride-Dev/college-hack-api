@@ -20,7 +20,7 @@ const REDIRECT_URI = `${BASE_URL}/auth/google/callback`;
 
 const oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
-export const getGoogleAuthUrl = () => {
+export const getAuthUrl = () => {
   if (!IS_PROD && !process.env.PORT)
     console.log("Port ENV missing", REDIRECT_URI);
   return oauth2Client.generateAuthUrl({
@@ -35,7 +35,7 @@ export const getGoogleAuthUrl = () => {
   });
 };
 
-export const getGoogleAccessToken = async (code: string) => {
+export const getAccessToken = async (code: string) => {
   try {
     const { tokens } = await oauth2Client.getToken(code);
     return tokens;
@@ -45,7 +45,7 @@ export const getGoogleAccessToken = async (code: string) => {
   }
 };
 
-export const getGoogleUserInfo = async (accessToken: string) => {
+export const getUserInfo = async (accessToken: string) => {
   const googleUserInfoUrl = "https://www.googleapis.com/oauth2/v2/userinfo";
   try {
     const response: any = await fetch(googleUserInfoUrl, {

@@ -43,7 +43,16 @@ npm run dev
 
 Visit / to view the API documentation.
 
+## API's Layers
+
+Middlewares: Express middlewares
+
+Gateways: Request handlers
+Entities: Object models
+Repositories: Database queries
+Routes: Express routes
+Services: External services
+
 ## Authors
 
 - [Clara Battesini](https://github.com/clarabatt)
-- [Kaled Barreto](https://github.com/kaledbarreto)

@@ -1,5 +1,5 @@
 import express from "express";
-import * as DocumentController from "../controllers/ctrl-document";
+import * as DocumentController from "../gateways/document/gtw-document";
 
 const router = express.Router();
 

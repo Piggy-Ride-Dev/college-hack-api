@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { createUser } from "./ctrl-user";
+import { createUser } from "../user/gtw-user";
 import {
   getGoogleAuthUrl,
   getGoogleAccessToken,
-} from "../services/svc-google-auth";
+} from "../../services/svc-google-auth";
 
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -25,6 +25,7 @@ export const handleGoogleCallback = async (req: Request, res: Response) => {
   const authToken = req.query.code;
   try {
     const credentials = await getGoogleAccessToken(authToken as string);
+    // Passar o objeto formatado
     const user = await createUser(credentials.access_token as string);
     const jwtToken = jwt.sign({ user: user }, jwtSecret as string, {
       expiresIn: "24h",
@@ -32,7 +33,7 @@ export const handleGoogleCallback = async (req: Request, res: Response) => {
 
     const cookieData = {
       token: jwtToken,
-      userId: user.user.id,
+      userId: user.userDB.id,
       isFirstAccess: user.isFirstAccess,
     };
 

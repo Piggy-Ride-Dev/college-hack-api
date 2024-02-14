@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getSemestersByUserID } from "../models/mdl-semester";
+import { getSemestersByUserID } from "../../entities/ent-semester";
 import { mongo } from "mongoose";
 
 export const getSemestersByUser = async (req: Request, res: Response) => {
