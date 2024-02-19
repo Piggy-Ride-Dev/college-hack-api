@@ -1,50 +1,44 @@
-import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { createUser } from "./ctrl-user";
-import {
-  getGoogleAuthUrl,
-  getGoogleAccessToken,
-} from "../services/svc-google-auth";
+import { findOrCreateUser, UserResponseData } from "./ctrl-user";
+import { AuthenticationAdapter } from "../adapters/adap-auth";
+import { ControllerResponse } from "../utils/util-response";
 
-const jwtSecret = process.env.JWT_SECRET;
-
-export const getToken = (req: Request, res: Response) => {
-  const cookieData = req.cookies["college-hack-data"];
-  if (!cookieData) {
-    return res.status(401).send("Authenticate first");
-  }
-  res.send(JSON.parse(cookieData));
+export const getAuthUrl = (authAdapter: AuthenticationAdapter) => {
+  return authAdapter.authenticationUrl();
 };
 
-export const redirectToGoogleAuth = (req: Request, res: Response) => {
-  const url = getGoogleAuthUrl();
-  res.redirect(url);
-};
-
-export const handleGoogleCallback = async (req: Request, res: Response) => {
-  const authToken = req.query.code;
+export const authorizeUser = async (
+  authToken: string,
+  authAdapter: AuthenticationAdapter
+) => {
   try {
-    const credentials = await getGoogleAccessToken(authToken as string);
-    const user = await createUser(credentials.access_token as string);
-    const jwtToken = jwt.sign({ user: user }, jwtSecret as string, {
-      expiresIn: "24h",
+    const userInformation = await authAdapter.getExternalUserInformation(
+      authToken
+    );
+    const { user, isFirstAccess } = (
+      await findOrCreateUser(
+        userInformation.email,
+        userInformation.given_name,
+        userInformation.family_name,
+        userInformation.id,
+        userInformation.picture
+      )
+    ).data as UserResponseData;
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret) throw new Error("JWT secret is not defined.");
+    const jwtToken = jwt.sign({ user }, jwtSecret, {
+      expiresIn: "48h",
     });
-
-    const cookieData = {
+    const frontendUrl = process.env.FRONTEND_URL;
+    if (!frontendUrl) throw new Error("Frontend URL is not defined.");
+    const cookie = {
       token: jwtToken,
-      userId: user.user.id,
-      isFirstAccess: user.isFirstAccess,
+      userId: user.id,
+      isFirstAccess: isFirstAccess,
     };
-
-    res.cookie("college-hack-data", JSON.stringify(cookieData), {
-      httpOnly: true,
-      secure: true,
-    });
-
-    const frontendUrl = process.env.FRONTEND_URL as string;
-
-    res.redirect(frontendUrl);
+    return ControllerResponse.success({ url: frontendUrl, cookie });
   } catch (error) {
-    res.status(500).send("Authentication failed");
+    console.error("Authorization error:", error);
+    return ControllerResponse.error(500, `Internal server error: ${error}`);
   }
 };

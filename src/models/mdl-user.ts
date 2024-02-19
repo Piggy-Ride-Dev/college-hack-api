@@ -3,7 +3,7 @@ import { model, Schema, Document } from "mongoose";
 export interface User extends Document {
   id?: string;
   name: string;
-  surname: string;
+  lastname: string;
   picture: string;
   googleId: string;
   email: string;
@@ -14,7 +14,7 @@ export interface User extends Document {
 
 export interface UserCreate {
   name: string;
-  surname: string;
+  lastname: string;
   email: string;
   googleId: string;
   picture: string;
@@ -22,7 +22,7 @@ export interface UserCreate {
 
 export interface UserUpdate {
   name?: string;
-  surname?: string;
+  lastname?: string;
   college?: string;
   program?: string;
   picture?: string;
@@ -31,7 +31,7 @@ export interface UserUpdate {
 
 const userSchema = new Schema<User>({
   name: { type: String, required: true },
-  surname: { type: String, required: true },
+  lastname: { type: String, required: true },
   picture: { type: String, required: false },
   googleId: { type: String, required: true },
   email: { type: String, required: true },
@@ -42,18 +42,18 @@ const userSchema = new Schema<User>({
 
 export const User = model("User", userSchema);
 
-export function createUser(user: UserCreate): Promise<User> {
+export function create(user: UserCreate): Promise<User> {
   return User.create(user);
 }
 
-export function getUserById(id: string): Promise<User | null> {
+export function getById(id: string): Promise<User | null> {
   return User.findById(id);
 }
 
-export function getUserByEmail(email: string): Promise<User | null> {
+export function getByEmail(email: string): Promise<User | null> {
   return User.findOne({ email: email });
 }
 
-export function updateUser(id: string, user: UserUpdate): Promise<User | null> {
+export function update(id: string, user: UserUpdate): Promise<User | null> {
   return User.findByIdAndUpdate(id, user);
 }
