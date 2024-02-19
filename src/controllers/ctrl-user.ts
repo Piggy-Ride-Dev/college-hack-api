@@ -1,66 +1,38 @@
-import { Request, Response } from "express";
+import { mongo } from "mongoose";
 import {
   createUser as createUserDB,
-  getUserByGoogleId,
   getUserById,
   updateUser as updateUserDB,
+  UserCreate,
   UserUpdate,
 } from "../models/mdl-user";
-import { getGoogleUserInfo } from "../services/svc-google-auth";
-import { mongo } from "mongoose";
 
-export const createUser = async (accessToken: string) => {
-  const googleUserInfo = await getGoogleUserInfo(accessToken);
-  let user = await getUserByGoogleId(googleUserInfo.id);
-  let isFirstAccess = false;
-
-  if (!user) {
-    const userResp = await createUserDB({
-      name: googleUserInfo.given_name,
-      surname: googleUserInfo.family_name,
-      picture: googleUserInfo.picture,
-      googleId: googleUserInfo.id,
-      email: googleUserInfo.email,
-    });
-    user = userResp;
-    isFirstAccess = true;
-  }
-
-  return { user, isFirstAccess };
+export const createUser = async (userData: UserCreate) => {
+  const userResp = await createUserDB(userData);
+  return { data: userResp };
 };
 
-export const getUser = async (req: Request, res: Response) => {
-  if (!mongo.ObjectId.isValid(req.params.id)) {
-    return res.status(400).send("Invalid user id");
-  }
-
+export const getUser = async (userId: string) => {
+  if (!mongo.ObjectId.isValid(userId))
+    return { status: 400, message: "Invalid ID" };
   try {
-    const user = await getUserById(req.params.id);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    return res.send({ user: user });
+    const user = await getUserById(userId);
+    if (!user) return { status: 404, message: "User not found" };
+    return { data: user };
   } catch (error) {
-    return res.status(500).send(`Internal server error: ${error}`);
+    return { status: 500, message: `Internal server error: ${error}` };
   }
 };
 
-export const updateUser = async (req: Request, res: Response) => {
-  if (!mongo.ObjectId.isValid(req.params.id)) {
-    return res.status(400).send("Invalid user id");
-  }
-
-  if (!req.body.user) {
-    return res.status(400).send("Invalid user data");
-  }
-
+export const updateUser = async (userId: string, userNewData: UserUpdate) => {
+  if (!mongo.ObjectId.isValid(userId))
+    return { status: 400, message: "Invalid ID" };
+  if (!userNewData) return { status: 400, message: "Invalid User Data" };
   try {
-    const user = await updateUserDB(req.params.id, req.body.user as UserUpdate);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    return res.send({ user: user });
+    const user = await updateUserDB(userId, userNewData as UserUpdate);
+    if (!user) return { status: 404, message: "User not found" };
+    return { data: user };
   } catch (error) {
-    return res.status(500).send(`Internal server error: ${error}`);
+    return { status: 500, message: `Internal server error: ${error}` };
   }
 };
