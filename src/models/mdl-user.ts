@@ -46,12 +46,12 @@ export function createUser(user: UserCreate): Promise<User> {
   return User.create(user);
 }
 
-export function getUserByGoogleId(id: string): Promise<User | null> {
-  return User.findOne({ googleId: id });
-}
-
 export function getUserById(id: string): Promise<User | null> {
   return User.findById(id);
+}
+
+export function getUserByEmail(email: string): Promise<User | null> {
+  return User.findOne({ email: email });
 }
 
 export function updateUser(id: string, user: UserUpdate): Promise<User | null> {

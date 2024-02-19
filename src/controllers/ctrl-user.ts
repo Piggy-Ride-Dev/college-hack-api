@@ -24,6 +24,16 @@ export const getUser = async (userId: string) => {
   }
 };
 
+export const getUserByEmail = async (email: string) => {
+  try {
+    const user = await getUserById(email);
+    if (!user) return { status: 404, message: "User not found" };
+    return { data: user };
+  } catch (error) {
+    return { status: 500, message: `Internal server error: ${error}` };
+  }
+};
+
 export const updateUser = async (userId: string, userNewData: UserUpdate) => {
   if (!mongo.ObjectId.isValid(userId))
     return { status: 400, message: "Invalid ID" };
