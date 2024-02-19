@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import path from "path";
 import routes from "./routes";
-import { connectDB } from "./db";
+import { connectDB } from "./db/connection";
 
 require("dotenv").config();
 
