@@ -33,7 +33,7 @@ router.get("/google/callback", async (req: Request, res: Response) => {
     httpOnly: true,
     secure: true,
   });
-  return res.send(response);
+  return res.send(response.data);
 });
 
 router.get("/token", async (req: Request, res: Response) => {

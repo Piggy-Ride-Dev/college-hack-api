@@ -10,8 +10,9 @@ router.get(
   authorizationMiddleware,
   async (req: Request, res: Response) => {
     const response = await UserController.getUser(req.params.id);
-    if (response.status) res.status(response.status).send(response.message);
-    else res.send(response);
+    if (response.isError())
+      return res.status(response.status).send(response.message);
+    else res.send(response.data);
   }
 );
 router.patch(
@@ -22,8 +23,9 @@ router.patch(
       req.params.id,
       req.body.user
     );
-    if (response.status) res.status(response.status).send(response.message);
-    else res.send(response);
+    if (response.isError())
+      return res.status(response.status).send(response.message);
+    else res.send(response.data);
   }
 );
 
