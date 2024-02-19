@@ -8,6 +8,8 @@ const BASE_URL = IS_PROD
   : `${process.env.API_URL}:${process.env.PORT}`;
 const REDIRECT_URI = `${BASE_URL}/auth/google/callback`;
 
+console.log("REDIRECT_URI", REDIRECT_URI);
+
 interface ExternalUserInformation {
   id: string;
   email: string;
