@@ -1,66 +1,77 @@
-import { Request, Response } from "express";
-import {
-  createUser as createUserDB,
-  getUserByGoogleId,
-  getUserById,
-  updateUser as updateUserDB,
-  UserUpdate,
-} from "../models/mdl-user";
-import { getGoogleUserInfo } from "../services/svc-google-auth";
 import { mongo } from "mongoose";
+import * as UserModel from "../models/mdl-user";
+import { ControllerResponse } from "../utils/util-response";
 
-export const createUser = async (accessToken: string) => {
-  const googleUserInfo = await getGoogleUserInfo(accessToken);
-  let user = await getUserByGoogleId(googleUserInfo.id);
+export interface UserResponseData {
+  user: UserModel.User;
+  isFirstAccess: boolean;
+}
+
+export const createUser = async (userData: UserModel.UserCreate) => {
+  const userResp = await UserModel.create(userData);
+  return ControllerResponse.success(userResp);
+};
+
+export const getUser = async (userId: string) => {
+  if (!mongo.ObjectId.isValid(userId))
+    return ControllerResponse.error(400, "Invalid ID");
+
+  try {
+    const user = await UserModel.getById(userId);
+    if (!user) return ControllerResponse.error(404, "User not found");
+    return ControllerResponse.success(user);
+  } catch (error) {
+    return ControllerResponse.error(500, `Internal server error: ${error}`);
+  }
+};
+
+export const getUserByEmail = async (email: string) => {
+  try {
+    const user = await UserModel.getByEmail(email);
+    if (!user) return ControllerResponse.error(404, "User not found");
+    return ControllerResponse.success(user);
+  } catch (error) {
+    return ControllerResponse.error(500, `Internal server error: ${error}`);
+  }
+};
+
+export const updateUser = async (
+  userId: string,
+  userNewData: UserModel.UserUpdate
+) => {
+  if (!mongo.ObjectId.isValid(userId))
+    return ControllerResponse.error(400, "Invalid ID");
+  if (!userNewData) return ControllerResponse.error(400, "Invalid User Data");
+
+  try {
+    const user = await UserModel.update(userId, userNewData);
+    if (!user) return ControllerResponse.error(404, "User not found");
+    return ControllerResponse.success(user);
+  } catch (error) {
+    return ControllerResponse.error(500, `Internal server error: ${error}`);
+  }
+};
+
+export async function findOrCreateUser(
+  email: string,
+  name: string,
+  lastname: string,
+  googleId: string,
+  picture: string
+) {
+  let userResponse = await getUserByEmail(email);
   let isFirstAccess = false;
 
-  if (!user) {
-    const userResp = await createUserDB({
-      name: googleUserInfo.given_name,
-      surname: googleUserInfo.family_name,
-      picture: googleUserInfo.picture,
-      googleId: googleUserInfo.id,
-      email: googleUserInfo.email,
+  if (userResponse.status === 404) {
+    const createUserResponse = await createUser({
+      email: email,
+      name: name,
+      lastname: lastname,
+      googleId: googleId,
+      picture: picture,
     });
-    user = userResp;
+    userResponse = ControllerResponse.success(createUserResponse.data);
     isFirstAccess = true;
   }
-
-  return { user, isFirstAccess };
-};
-
-export const getUser = async (req: Request, res: Response) => {
-  if (!mongo.ObjectId.isValid(req.params.id)) {
-    return res.status(400).send("Invalid user id");
-  }
-
-  try {
-    const user = await getUserById(req.params.id);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    return res.send({ user: user });
-  } catch (error) {
-    return res.status(500).send(`Internal server error: ${error}`);
-  }
-};
-
-export const updateUser = async (req: Request, res: Response) => {
-  if (!mongo.ObjectId.isValid(req.params.id)) {
-    return res.status(400).send("Invalid user id");
-  }
-
-  if (!req.body.user) {
-    return res.status(400).send("Invalid user data");
-  }
-
-  try {
-    const user = await updateUserDB(req.params.id, req.body.user as UserUpdate);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    return res.send({ user: user });
-  } catch (error) {
-    return res.status(500).send(`Internal server error: ${error}`);
-  }
-};
+  return ControllerResponse.success({ user: userResponse.data, isFirstAccess });
+}

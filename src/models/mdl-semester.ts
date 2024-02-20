@@ -51,18 +51,22 @@ const semesterSchema = new Schema<Semester>({
 
 export const Semester = model("Semester", semesterSchema);
 
-export function createSemester(semester: Semester): Promise<Semester> {
+export function create(semester: Semester): Promise<Semester> {
   return Semester.create(semester);
 }
 
-export function getSemesterById(id: string): Promise<Semester | null> {
+export function getById(id: string): Promise<Semester | null> {
   return Semester.findById(id).populate("sections");
 }
 
-export function getSemestersByUserID(userID: string): Promise<Semester[]> {
+export function getByUserID(userID: string): Promise<Semester[]> {
   return Semester.find({ userID: userID }).populate("sections");
 }
 
-export function deleteSemester(id: string): Promise<Semester | null> {
+export function update(semester: Semester): Promise<Semester | null> {
+  return Semester.findByIdAndUpdate(semester.id, semester);
+}
+
+export function deleteItem(id: string): Promise<Semester | null> {
   return Semester.findByIdAndDelete(id);
 }
