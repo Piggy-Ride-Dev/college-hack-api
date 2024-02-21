@@ -1,26 +1,12 @@
-import fs from "fs";
-import path from "path";
 import multer from "multer";
+import { AzureBlobAdapter } from "../adapters/adap-blob";
+import { Request, Response, NextFunction } from "express";
 
-const uploadsDir = path.join(__dirname, "uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
-}
+const azureBlobAdapter = new AzureBlobAdapter();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadsDir);
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`);
-  },
-});
-
-export const upload = multer({ storage: storage });
-
-export const multipleUpload = multer({
-  storage,
-  limits: { fileSize: 3 * 1024 * 1024 },
+export const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 3 * 1024 * 1024 }, // 3MB limit
   fileFilter: (req, file, cb) => {
     if (
       file.mimetype === "application/pdf" ||
@@ -31,10 +17,35 @@ export const multipleUpload = multer({
     ) {
       cb(null, true);
     } else {
+      const error = new Error("Only pdf, docx, and xlsx files are allowed");
+      error.name = "InvalidFileTypeError";
       cb(null, false);
-      const err = new Error("Only pdf, docx, and xlsx files are allowed");
-      err.name = "InvalidFileTypeError";
-      return cb(err);
     }
   },
-}).array("files", 5);
+});
+
+export const azureUploadMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (!req.files || (Array.isArray(req.files) && req.files.length === 0)) {
+    return res.status(400).send("No files uploaded.");
+  }
+
+  try {
+    const files: Express.Multer.File[] = req.files as Express.Multer.File[];
+
+    const uploadPromises = files.map((file) =>
+      azureBlobAdapter.uploadFile(file.buffer, file.originalname)
+    );
+    const urls = await Promise.all(uploadPromises);
+
+    req.body.uploadedFilesUrls = urls;
+
+    next();
+  } catch (error) {
+    console.error("Error uploading files to Azure Blob Storage:", error);
+    res.status(500).send("Error uploading files.");
+  }
+};
