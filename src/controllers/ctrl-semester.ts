@@ -1,6 +1,6 @@
 import { mongo } from "mongoose";
-import * as SemesterModel from "../models/mdl-semester";
 import { ControllerResponse } from "../utils/util-response";
+import * as SemesterModel from "../models/mdl-semester";
 
 export const getSemesterList = async (userId: string) => {
   if (!mongo.ObjectId.isValid(userId)) {
@@ -38,12 +38,42 @@ export const createSemester = async (semester: SemesterModel.Semester) => {
   }
 };
 
-export const updateSemester = async (semester: SemesterModel.Semester) => {
+export const updateSemester = async (
+  semesterId: string,
+  semesterToUpdate: SemesterModel.Semester
+) => {
+  const semester = await getSemester(semesterId);
+  if (!semesterToUpdate)
+    return ControllerResponse.error(404, "Semester not found");
   try {
-    const updatedSemester = await SemesterModel.update(semester);
+    const updatedSemester = await SemesterModel.update(
+      semesterId,
+      semesterToUpdate
+    );
     return ControllerResponse.success(updatedSemester);
   } catch (error) {
     console.error("Error updating semester", error);
+    return ControllerResponse.error(500, `Internal server error: ${error}`);
+  }
+};
+
+export const uploadFilesToSemester = async (
+  semesterId: string,
+  filesUrls: string[]
+) => {
+  if (!mongo.ObjectId.isValid(semesterId)) {
+    return ControllerResponse.error(400, "Invalid semester id");
+  }
+  const semester = await SemesterModel.getById(semesterId);
+  if (!semester) return ControllerResponse.error(404, "Semester not found");
+
+  try {
+    const response = await Promise.all(
+      filesUrls.map((url) => SemesterModel.uploadFile(semesterId, url))
+    );
+    return ControllerResponse.success(response);
+  } catch (error) {
+    console.error("Error adding files URLs to semester", error);
     return ControllerResponse.error(500, `Internal server error: ${error}`);
   }
 };
