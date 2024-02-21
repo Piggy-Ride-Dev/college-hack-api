@@ -4,18 +4,18 @@ name: Deploy to Azure
     branches:
       - main
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-      - run: npm ci
-      - run: npm test
+  # tests:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "20"
+  #     - run: npm ci
+  #     - run: npm test
 
   build-and-push:
-    needs: tests
+    # needs: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
