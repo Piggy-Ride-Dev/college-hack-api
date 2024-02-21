@@ -37,7 +37,10 @@ router.patch(
   "/:id",
   authorizationMiddleware,
   async (req: Request, res: Response) => {
-    const response = await SemesterController.createSemester(req.body.semester);
+    const response = await SemesterController.updateSemester(
+      req.params.id,
+      req.body.semester
+    );
     return res.status(response.status).json(response);
   }
 );
