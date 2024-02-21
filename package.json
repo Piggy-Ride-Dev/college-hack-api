@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "tsc && node dist/app.js",
     "start": "node dist/app.js",
-    "build": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html && tsc",
+    "build": "tsc",
     "docs": "npx @redocly/cli build-docs ./doc-spec.yaml -o ./dist/docs/index.html"
   },
   "repository": {
