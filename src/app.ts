@@ -24,14 +24,13 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
 app.use(bodyParser.json());
 app.use(cookieParser());
 
 connectDB();
 
 app.use(routes);
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
