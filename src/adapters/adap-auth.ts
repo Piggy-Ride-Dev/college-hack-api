@@ -4,7 +4,7 @@ const CLIENT_ID = process.env.GOOGLE_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
 const IS_PROD = process.env.ENV === "prod";
 const BASE_URL = IS_PROD
-  ? "${process.env.API_URL}"
+  ? `${process.env.API_URL}`
   : `${process.env.API_URL}:${process.env.PORT}`;
 const REDIRECT_URI = `${BASE_URL}/auth/google/callback`;
 
