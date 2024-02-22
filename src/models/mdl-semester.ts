@@ -16,8 +16,8 @@ export interface Schedule {
 
 export interface Section extends SectionProcessing {
   code: string;
-  courseID: string;
-  teacherID: string;
+  courseID: Schema.Types.ObjectId;
+  teacherID: Schema.Types.ObjectId;
   status: SectionStatus;
   schedules: {
     lecture: Schedule | null;
@@ -33,7 +33,7 @@ export interface SectionProcessing {
 }
 
 export interface Semester extends Document {
-  userID: string;
+  userID: Schema.Types.ObjectId;
   courses: Section[];
   number: number;
   year: number;
@@ -43,8 +43,8 @@ export interface Semester extends Document {
 
 const sectionSchema = new Schema<Section>({
   code: { type: String, required: false },
-  courseID: { type: String, required: false },
-  teacherID: { type: String, required: false },
+  courseID: { type: Schema.Types.ObjectId, required: false },
+  teacherID: { type: Schema.Types.ObjectId, required: false },
   status: { type: String, required: false },
   schedules: {
     lecture: { type: Object, required: false },
@@ -56,7 +56,7 @@ const sectionSchema = new Schema<Section>({
 });
 
 const semesterSchema = new Schema<Semester>({
-  userID: { type: String, required: true },
+  userID: { type: Schema.Types.ObjectId, required: true },
   courses: {
     type: [{ type: Schema.Types.ObjectId, ref: "Section" }],
     required: true,
