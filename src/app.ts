@@ -5,6 +5,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import routes from "./routes";
+import cors from "cors";
 import { connectDB } from "./db/connection";
 
 require("dotenv").config();
@@ -24,6 +25,7 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
+app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
