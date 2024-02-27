@@ -32,6 +32,7 @@ router.get("/google/callback", async (req: Request, res: Response) => {
   res.cookie("college-hack-data", JSON.stringify(cookie), {
     httpOnly: true,
     secure: true,
+    sameSite: "none",
   });
   return res.send(response.data);
 });
