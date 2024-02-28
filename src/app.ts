@@ -10,6 +10,9 @@ import { connectDB } from "./db/connection";
 
 require("dotenv").config();
 
+// const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const frontendUrl = "http://localhost:3000";
+
 export const app: express.Application = express();
 
 const options = {
@@ -25,7 +28,7 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: frontendUrl, credentials: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 

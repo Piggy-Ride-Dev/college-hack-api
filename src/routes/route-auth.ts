@@ -5,6 +5,8 @@ import { AuthenticationAdapter } from "../adapters/adap-auth";
 
 const router = express.Router();
 const authAdapter = new AuthenticationAdapter();
+// const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const frontendUrl = "http://localhost:3000";
 
 interface AuthResponseData {
   url: string;
@@ -26,7 +28,9 @@ router.get("/google/callback", async (req: Request, res: Response) => {
     authAdapter
   );
   if (response.isError()) {
-    return res.status(response.status).send(response.message);
+    return res.redirect(
+      `${frontendUrl}/login-failed?error=${response.message}`
+    );
   }
   const { cookie } = response.data as AuthResponseData;
   res.cookie("college-hack-data", JSON.stringify(cookie), {
@@ -34,7 +38,7 @@ router.get("/google/callback", async (req: Request, res: Response) => {
     secure: true,
     sameSite: "none",
   });
-  return res.send(response.data);
+  return res.redirect(`${frontendUrl}/login-success`);
 });
 
 router.get("/token", async (req: Request, res: Response) => {
