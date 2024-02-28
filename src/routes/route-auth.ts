@@ -38,7 +38,9 @@ router.get("/google/callback", async (req: Request, res: Response) => {
     secure: true,
     sameSite: "none",
   });
-  return res.redirect(`${frontendUrl}/login-success`);
+  return res.redirect(
+    `${frontendUrl}/login-success?jwt=${cookie.token}&isFirstAccess=${cookie.isFirstAccess}`
+  );
 });
 
 router.get("/token", async (req: Request, res: Response) => {
