@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import { model, Schema, Document, Types } from "mongoose";
 
 export interface User extends Document {
   id?: string;
@@ -7,8 +7,8 @@ export interface User extends Document {
   picture: string;
   googleId: string;
   email: string;
-  college: string;
-  program: string;
+  college: Types.ObjectId;
+  program: Types.ObjectId;
   gpa: number;
 }
 
@@ -23,8 +23,8 @@ export interface UserCreate {
 export interface UserUpdate {
   name?: string;
   lastname?: string;
-  college?: string;
-  program?: string;
+  college?: Types.ObjectId;
+  program?: Types.ObjectId;
   picture?: string;
   gpa?: number;
 }
@@ -35,8 +35,8 @@ const userSchema = new Schema<User>({
   picture: { type: String, required: false },
   googleId: { type: String, required: true },
   email: { type: String, required: true },
-  college: { type: String, required: false },
-  program: { type: String, required: false },
+  college: { type: Schema.Types.ObjectId, required: false },
+  program: { type: Schema.Types.ObjectId, required: false },
   gpa: { type: Number, required: false },
 });
 
@@ -47,13 +47,13 @@ export function create(user: UserCreate): Promise<User> {
 }
 
 export function getById(id: string): Promise<User | null> {
-  return User.findById(id);
+  return User.findById(id).populate("college").populate("program");
 }
 
 export function getByEmail(email: string): Promise<User | null> {
-  return User.findOne({ email: email });
+  return User.findOne({ email: email }).populate("college").populate("program");
 }
 
 export function update(id: string, user: UserUpdate): Promise<User | null> {
-  return User.findByIdAndUpdate(id, user);
+  return User.findByIdAndUpdate(id, user).populate("college").populate("program");
 }
