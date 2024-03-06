@@ -7,14 +7,9 @@ export const getAuthUrl = (authAdapter: AuthenticationAdapter) => {
   return authAdapter.authenticationUrl();
 };
 
-export const authorizeUser = async (
-  authToken: string,
-  authAdapter: AuthenticationAdapter
-) => {
+export const authorizeUser = async (authToken: string, authAdapter: AuthenticationAdapter) => {
   try {
-    const userInformation = await authAdapter.getExternalUserInformation(
-      authToken
-    );
+    const userInformation = await authAdapter.getExternalUserInformation(authToken);
     const { user, isFirstAccess } = (
       await findOrCreateUser(
         userInformation.email,

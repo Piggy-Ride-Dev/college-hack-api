@@ -13,8 +13,7 @@ export const createUser = async (userData: UserModel.UserCreate) => {
 };
 
 export const getUser = async (userId: string) => {
-  if (!mongo.ObjectId.isValid(userId))
-    return ControllerResponse.error(400, "Invalid ID");
+  if (!mongo.ObjectId.isValid(userId)) return ControllerResponse.error(400, "Invalid ID");
 
   try {
     const user = await UserModel.getById(userId);
@@ -28,19 +27,14 @@ export const getUser = async (userId: string) => {
 export const getUserByEmail = async (email: string) => {
   try {
     const user = await UserModel.getByEmail(email);
-    if (!user) return ControllerResponse.error(404, "User not found");
     return ControllerResponse.success(user);
   } catch (error) {
     return ControllerResponse.error(500, `Internal server error: ${error}`);
   }
 };
 
-export const updateUser = async (
-  userId: string,
-  userNewData: UserModel.UserUpdate
-) => {
-  if (!mongo.ObjectId.isValid(userId))
-    return ControllerResponse.error(400, "Invalid ID");
+export const updateUser = async (userId: string, userNewData: UserModel.UserUpdate) => {
+  if (!mongo.ObjectId.isValid(userId)) return ControllerResponse.error(400, "Invalid ID");
   if (!userNewData) return ControllerResponse.error(400, "Invalid User Data");
 
   try {
@@ -62,7 +56,7 @@ export async function findOrCreateUser(
   let userResponse = await getUserByEmail(email);
   let isFirstAccess = false;
 
-  if (userResponse.status === 404) {
+  if (userResponse.data === null) {
     const createUserResponse = await createUser({
       email: email,
       name: name,
