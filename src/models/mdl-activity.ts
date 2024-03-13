@@ -1,15 +1,11 @@
-export enum ExamType {
+export enum ActivityType {
+  Lab = "lab",
+  Workshop = "workshop",
+  Exercise = "exercise",
   Quiz = "quiz",
   Test = "test",
   MidTerm = "midterm",
   Final = "final",
-  Other = "other",
-}
-
-export enum AssignmentType {
-  Lab = "lab",
-  Workshop = "workshop",
-  Exercise = "exercise",
   Other = "other",
 }
 
@@ -23,14 +19,5 @@ export interface Activity {
   weekNumber: number;
   dueDate: Date;
   rate: number;
-}
-
-export interface Exam extends Activity {
-  examType: ExamType;
-}
-
-export interface Assignment extends Activity {
-  assignmentType: AssignmentType;
-  name: string;
-  isInGroup: boolean;
+  type: ActivityType;
 }
