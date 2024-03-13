@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import routes from "./routes";
 import cors from "cors";
 import { connectDB } from "./db/connection";
+// import "./tasks/scheduler";
 
 require("dotenv").config();
 

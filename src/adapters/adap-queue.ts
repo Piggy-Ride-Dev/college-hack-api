@@ -2,6 +2,7 @@ import {
   QueueServiceClient,
   type QueueClient,
   type ReceivedMessageItem,
+  PeekedMessageItem,
 } from "@azure/storage-queue";
 
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING || "";
@@ -22,9 +23,12 @@ export class AzureQueueAdapter {
     await this.queueClient.sendMessage(Buffer.from(message).toString("base64"));
   }
 
-  async receiveMessages(): Promise<ReceivedMessageItem[]> {
-    const response = await this.queueClient.receiveMessages();
-    return response.receivedMessageItems;
+  async receiveMessages(): Promise<PeekedMessageItem[]> {
+    const response = await this.queueClient.receiveMessages({
+      numberOfMessages: 1,
+      visibilityTimeout: 30,
+    });
+    return response.receivedMessageItems || [];
   }
 
   async deleteMessage(messageId: string, popReceipt: string): Promise<void> {
