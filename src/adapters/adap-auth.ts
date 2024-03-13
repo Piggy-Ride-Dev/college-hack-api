@@ -3,11 +3,10 @@ import { OAuth2Client } from "google-auth-library";
 const CLIENT_ID = process.env.GOOGLE_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
 const IS_PROD = process.env.ENV === "prod";
-const BASE_URL = IS_PROD
-  ? `${process.env.API_URL}`
-  : `${process.env.API_URL}:${process.env.PORT}`;
+const BASE_URL = IS_PROD ? `${process.env.API_URL}` : `${process.env.API_URL}:${process.env.PORT}`;
 const REDIRECT_URI = `${BASE_URL}/auth/google/callback`;
 
+console.log("AUTH", `${BASE_URL}/auth/google`);
 console.log("REDIRECT_URI", REDIRECT_URI);
 
 interface ExternalUserInformation {
@@ -23,16 +22,11 @@ export class AuthenticationAdapter {
   private oauth2Client: OAuth2Client;
 
   constructor() {
-    this.oauth2Client = new OAuth2Client(
-      CLIENT_ID,
-      CLIENT_SECRET,
-      REDIRECT_URI
-    );
+    this.oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
   }
 
   public authenticationUrl = () => {
-    if (!IS_PROD && !process.env.PORT)
-      console.log("Port ENV missing", REDIRECT_URI);
+    if (!IS_PROD && !process.env.PORT) console.log("Port ENV missing", REDIRECT_URI);
     return this.oauth2Client.generateAuthUrl({
       access_type: "offline",
       prompt: "consent",
