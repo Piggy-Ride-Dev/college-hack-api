@@ -28,7 +28,17 @@ export const getSemester = async (semesterId: string) => {
   }
 };
 
-export const createSemester = async (semester: SemesterModel.Semester) => {
+export const createSemester = async (
+  userId: string,
+  startDate: Date,
+  season: SemesterModel.SemesterSeason
+) => {
+  const semester = {
+    userID: userId,
+    startDate: startDate,
+    endDate: new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 98),
+    season: season,
+  };
   try {
     const newSemester = await SemesterModel.create(semester);
     return ControllerResponse.success(newSemester);
@@ -43,13 +53,9 @@ export const updateSemester = async (
   semesterToUpdate: SemesterModel.Semester
 ) => {
   const semester = await getSemester(semesterId);
-  if (!semesterToUpdate)
-    return ControllerResponse.error(404, "Semester not found");
+  if (!semesterToUpdate) return ControllerResponse.error(404, "Semester not found");
   try {
-    const updatedSemester = await SemesterModel.update(
-      semesterId,
-      semesterToUpdate
-    );
+    const updatedSemester = await SemesterModel.update(semesterId, semesterToUpdate);
     return ControllerResponse.success(updatedSemester);
   } catch (error) {
     console.error("Error updating semester", error);
@@ -57,10 +63,7 @@ export const updateSemester = async (
   }
 };
 
-export const uploadFilesToSemester = async (
-  semesterId: string,
-  filesUrls: string[]
-) => {
+export const uploadFilesToSemester = async (semesterId: string, filesUrls: string[]) => {
   if (!mongo.ObjectId.isValid(semesterId)) {
     return ControllerResponse.error(400, "Invalid semester id");
   }

@@ -1,12 +1,9 @@
 import { Schema, model, Document, ObjectId } from "mongoose";
 import { WeekDay } from "../utils/util-types";
 
-export type ProcessingFileStatus =
-  | "pending"
-  | "processing"
-  | "completed"
-  | "failed";
+export type ProcessingFileStatus = "pending" | "processing" | "completed" | "failed";
 export type SectionStatus = "active" | "completed" | "dropped" | "failed";
+export type SemesterSeason = "Summer" | "Fall" | "Winter";
 
 export interface Schedule {
   day: WeekDay;
@@ -32,13 +29,19 @@ export interface SectionProcessing {
   files: string[];
 }
 
+export interface CreateSemester {
+  userID: string;
+  season: SemesterSeason;
+  startDate: Date;
+  endDate: Date;
+}
+
 export interface Semester extends Document {
   userID: Schema.Types.ObjectId;
   courses: Section[];
-  number: number;
-  year: number;
-  start: Date | null;
-  end: Date | null;
+  season: SemesterSeason;
+  startDate: Date;
+  endDate: Date;
 }
 
 const sectionSchema = new Schema<Section>({
@@ -61,17 +64,16 @@ const semesterSchema = new Schema<Semester>({
     type: [{ type: Schema.Types.ObjectId, ref: "Section" }],
     required: true,
   },
-  number: { type: Number, required: true },
-  start: { type: Date, required: false },
-  end: { type: Date, required: false },
-  year: { type: Number, required: true },
+  season: { type: String, required: true },
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: false },
 });
 
 export const SemesterModel = model("Semester", semesterSchema);
 export const SectionModel = model("Section", sectionSchema);
 
-export function create(semester: Semester): Promise<Semester> {
-  return SemesterModel.create(semester);
+export function create(semester: CreateSemester): Promise<Semester> {
+  return SemesterModel.create(semester).then((data: Semester) => data);
 }
 
 export function getById(id: string): Promise<Semester | null> {
@@ -82,17 +84,11 @@ export function getByUserID(userID: string): Promise<Semester[]> {
   return SemesterModel.find({ userID: userID });
 }
 
-export function update(
-  semesterId: string,
-  semester: Semester
-): Promise<Semester | null> {
+export function update(semesterId: string, semester: Semester): Promise<Semester | null> {
   return SemesterModel.findByIdAndUpdate(semesterId, semester, { new: true });
 }
 
-export async function uploadFile(
-  semesterId: string,
-  fileURL: string
-): Promise<Semester | null> {
+export async function uploadFile(semesterId: string, fileURL: string): Promise<Semester | null> {
   const newSection = await SectionModel.create({
     processingFileStatus: "pending",
     files: [fileURL],

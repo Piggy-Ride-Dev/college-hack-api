@@ -5,6 +5,9 @@
  *     ProcessingFileStatus:
  *       type: string
  *       enum: [pending, processing, completed, failed]
+ *     SemesterSeason:
+ *       type: string
+ *       enum: [Winter, Summer, Fall]
  *     SectionStatus:
  *       type: string
  *       enum: [active, completed, dropped, failed]
@@ -32,41 +35,66 @@
  *         status:
  *           $ref: '#/components/schemas/SectionStatus'
  *         schedules:
- *           type: object
- *           properties:
- *             lecture:
- *               $ref: '#/components/schemas/Schedule'
- *             lab:
- *               $ref: '#/components/schemas/Schedule'
- *             office:
- *               $ref: '#/components/schemas/Schedule'
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Schedule'
  *         processingFileStatus:
  *           $ref: '#/components/schemas/ProcessingFileStatus'
  *         files:
  *           type: array
  *           items:
  *             type: string
+ *     CreateSemester:
+ *       type: object
+ *       properties:
+ *         startDate:
+ *           type: string
+ *           format: date-time
+ *         season:
+ *           type: string
+ *           $ref: '#/components/schemas/SemesterSeason'
  *     Semester:
  *       type: object
  *       properties:
+ *         _id:
+ *           type: string
+ *         season:
+ *           type: string
+ *           items:
+ *             $ref: '#/components/schemas/SemesterSeason'
  *         userID:
  *           type: string
  *         courses:
  *           type: array
  *           items:
  *             $ref: '#/components/schemas/Section'
- *         number:
- *           type: integer
- *         year:
- *           type: integer
- *         start:
+ *         startDate:
  *           type: string
  *           format: date-time
- *         end:
+ *         endDate:
+ *           type: string
+ *           format: date-time
+ *     EmptySemester:
+ *       type: object
+ *       properties:
+ *         _id:
+ *           type: string
+ *         season:
+ *           type: string
+ *           $ref: '#/components/schemas/SemesterSeason'
+ *         userID:
+ *           type: string
+ *         courses:
+ *           type: array
+ *           items: {}
+ *         startDate:
+ *           type: string
+ *           format: date-time
+ *         endDate:
  *           type: string
  *           format: date-time
  *
- * /semesters/:
+ * /semester/:
  *   get:
  *     summary: Get list of semesters for the user
  *     tags: [Semesters]
@@ -91,12 +119,16 @@
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Semester'
+ *             $ref: '#/components/schemas/CreateSemester'
  *     responses:
  *       200:
  *         description: Semester created successfully
+ *         content:
+ *          application/json:
+ *           schema:
+ *            $ref: '#/components/schemas/EmptySemester'
  *
- * /semesters/{id}:
+ * /semester/{id}:
  *   get:
  *     summary: Get a specific semester by ID
  *     tags: [Semesters]
@@ -136,7 +168,7 @@
  *       200:
  *         description: Semester updated successfully
  *
- * /semesters/{id}/upload-files:
+ * /semester/{id}/upload-files:
  *   post:
  *     summary: Upload files to a specific semester
  *     tags: [Semesters]
