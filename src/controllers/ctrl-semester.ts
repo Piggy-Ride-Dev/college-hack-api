@@ -78,7 +78,7 @@ export const uploadFilesToSemester = async (semesterId: string, filesUrls: strin
     filesUrls.map(async (url) => {
       try {
         await SemesterModel.uploadFile(semesterId, url);
-        await queue.sendMessage(url);
+        await queue.sendMessage(`${semesterId},${url}`);
         return { url, status: "success" };
       } catch (error) {
         console.error(`Error processing ${url}:`, error);
