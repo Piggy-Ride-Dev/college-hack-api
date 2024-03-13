@@ -39,15 +39,16 @@ router.post(
   upload.array("files", 6),
   azureUploadMiddleware,
   async (req: Request, res: Response) => {
-    res.status(200).json({
-      message: "Files uploaded successfully",
-      urls: req.body.uploadedFilesUrls,
-    });
-    const response = await SemesterController.uploadFilesToSemester(
-      req.params.id,
-      req.body.uploadedFilesUrls
-    );
-    return res.status(response.status).json(response);
+    try {
+      const response = await SemesterController.uploadFilesToSemester(
+        req.params.id,
+        req.body.uploadedFilesUrls
+      );
+      return res.status(response.status).json(response);
+    } catch (error) {
+      console.error("Error uploading files", error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
   }
 );
 

@@ -1,5 +1,6 @@
 import { mongo } from "mongoose";
 import { ControllerResponse } from "../utils/util-response";
+import { AzureQueueAdapter } from "../adapters/adap-queue";
 import * as SemesterModel from "../models/mdl-semester";
 
 export const getSemesterList = async (userId: string) => {
@@ -70,13 +71,21 @@ export const uploadFilesToSemester = async (semesterId: string, filesUrls: strin
   const semester = await SemesterModel.getById(semesterId);
   if (!semester) return ControllerResponse.error(404, "Semester not found");
 
-  try {
-    const response = await Promise.all(
-      filesUrls.map((url) => SemesterModel.uploadFile(semesterId, url))
-    );
-    return ControllerResponse.success(response);
-  } catch (error) {
-    console.error("Error adding files URLs to semester", error);
-    return ControllerResponse.error(500, `Internal server error: ${error}`);
-  }
+  const queue = new AzureQueueAdapter("process-addendum-files");
+  await queue.createQueue();
+
+  const response = await Promise.all(
+    filesUrls.map(async (url) => {
+      try {
+        await SemesterModel.uploadFile(semesterId, url);
+        await queue.sendMessage(url);
+        return { url, status: "success" };
+      } catch (error) {
+        console.error(`Error processing ${url}:`, error);
+        return { url, status: "error", error: error };
+      }
+    })
+  );
+
+  return ControllerResponse.success(response);
 };

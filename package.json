@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Piggy-Ride-Dev/college-hack-api#readme",
   "dependencies": {
     "@azure/storage-blob": "^12.17.0",
+    "@azure/storage-queue": "^12.16.0",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

@@ -207,14 +207,22 @@
  *               properties:
  *                 message:
  *                   type: string
- *                   example: Files uploaded successfully
- *                 urls:
+ *                   example: Success
+ *                 data:
  *                   type: array
  *                   items:
- *                     type: string
- *                     example: https://example.com/file/path
+ *                     type: object
+ *                     properties:
+ *                       url:
+ *                         type: string
+ *                         example: https://example.com/file1.pdf
+ *                       status:
+ *                         type: string
+ *                         example: success
  *       400:
  *         description: Bad request if the file upload fails
  *       401:
  *         description: Unauthorized if the user is not authenticated
+ *       404:
+ *         description: Not found if the specified semester does not exist.
  */
