@@ -3,11 +3,7 @@ export class ControllerResponse<T> {
     public status: number = 200,
     public message: string = "",
     public data: T | null = null
-  ) {
-    if (this.isError()) {
-      throw new Error(`Request failed with status ${status}: ${message}`);
-    }
-  }
+  ) {}
 
   static success<T>(data: T) {
     return new ControllerResponse(200, "Success", data);
