@@ -88,16 +88,17 @@ export function update(semesterId: string, semester: Semester): Promise<Semester
   return SemesterModel.findByIdAndUpdate(semesterId, semester, { new: true });
 }
 
-export async function uploadFile(semesterId: string, fileURL: string): Promise<Semester | null> {
+export async function uploadFile(semesterId: string, fileURL: string): Promise<Section | null> {
   const newSection = await SectionModel.create({
     processingFileStatus: "pending",
     files: [fileURL],
   });
-  return await SemesterModel.findByIdAndUpdate(
+  await SemesterModel.findByIdAndUpdate(
     semesterId,
     { $push: { courses: newSection._id } },
     { new: true }
   );
+  return newSection;
 }
 
 export function deleteItem(id: string): Promise<Semester | null> {
