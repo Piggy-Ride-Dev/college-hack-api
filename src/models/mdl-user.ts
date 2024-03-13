@@ -9,7 +9,6 @@ export interface User extends Document {
   email: string;
   college: Types.ObjectId;
   program: Types.ObjectId;
-  gpa: number;
 }
 
 export interface UserCreate {
@@ -26,7 +25,6 @@ export interface UserUpdate {
   college?: Types.ObjectId;
   program?: Types.ObjectId;
   picture?: string;
-  gpa?: number;
 }
 
 const userSchema = new Schema<User>({
@@ -37,7 +35,6 @@ const userSchema = new Schema<User>({
   email: { type: String, required: true },
   college: { type: Schema.Types.ObjectId, required: false },
   program: { type: Schema.Types.ObjectId, required: false },
-  gpa: { type: Number, required: false },
 });
 
 export const User = model("User", userSchema);

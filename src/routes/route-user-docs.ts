@@ -29,10 +29,6 @@
  *         program:
  *           type: string
  *           description: The user's program
- *         gpa:
- *           type: number
- *           format: float
- *           description: The user's GPA
  *     UserCreate:
  *       type: object
  *       properties:
@@ -59,9 +55,6 @@
  *           type: string
  *         picture:
  *           type: string
- *         gpa:
- *           type: number
- *           format: float
  *
  * /user/:
  *   get:
