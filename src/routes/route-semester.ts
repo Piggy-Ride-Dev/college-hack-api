@@ -17,8 +17,11 @@ router.get("/:id", authorizationMiddleware, async (req: Request, res: Response) 
 });
 
 router.post("/", authorizationMiddleware, async (req: Request, res: Response) => {
-  if (!req.body.startDate || !req.body.season) {
-    return res.status(400).json({ message: "Missing required fields" });
+  if (!req.body.startDate) {
+    return res.status(400).json({ message: "Missing startDate field" });
+  }
+  if (!req.body.season) {
+    return res.status(400).json({ message: "Missing season field" });
   }
   const response = await SemesterController.createSemester(
     req.user._id,
