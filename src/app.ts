@@ -11,7 +11,7 @@ import { connectDB } from "./db/connection";
 
 require("dotenv").config();
 
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3333";
 
 export const app: express.Application = express();
 

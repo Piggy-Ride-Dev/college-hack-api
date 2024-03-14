@@ -5,7 +5,7 @@ import { AuthenticationAdapter } from "../adapters/adap-auth";
 
 const router = express.Router();
 const authAdapter = new AuthenticationAdapter();
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3333";
 
 interface AuthResponseData {
   url: string;
