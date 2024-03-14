@@ -29,7 +29,8 @@ const options = {
 const swaggerSpec = swaggerJsdoc(options);
 
 app.use(cors({ origin: frontendUrl, credentials: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "10mb" }));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(cookieParser());
 
 connectDB();

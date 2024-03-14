@@ -6,29 +6,25 @@ const azureBlobAdapter = new AzureBlobAdapter();
 
 export const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 3 * 1024 * 1024 }, // 3MB limit
+  limits: { fileSize: 6 * 1024 * 1024 }, // 6MB limit
   fileFilter: (req, file, cb) => {
     if (
       file.mimetype === "application/pdf" ||
-      file.mimetype ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-      file.mimetype ===
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      file.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+      file.mimetype === "application/vnd.ms-excel" ||
+      file.mimetype === "application/msword"
     ) {
       cb(null, true);
     } else {
-      const error = new Error("Only pdf, docx, and xlsx files are allowed");
+      const error = new Error("Only pdf, docx, xlsx, xls, and doc files are allowed");
       error.name = "InvalidFileTypeError";
       cb(null, false);
     }
   },
 });
 
-export const azureUploadMiddleware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const azureUploadMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.files || (Array.isArray(req.files) && req.files.length === 0)) {
     return res.status(400).send("No files uploaded.");
   }
