@@ -6,10 +6,13 @@ export interface Teacher extends Document {
   email: string;
 }
 
-const teacherSchema = new Schema<Teacher>({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-});
+const teacherSchema = new Schema<Teacher>(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+  },
+  { versionKey: false }
+);
 
 export const Teacher = model("Teacher", teacherSchema);
 

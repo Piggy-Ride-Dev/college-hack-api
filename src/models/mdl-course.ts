@@ -7,11 +7,14 @@ export interface Course extends Document {
   programID: string;
 }
 
-const courseSchema = new Schema<Course>({
-  name: { type: String, required: true },
-  code: { type: String, required: true },
-  programID: { type: String, required: true },
-});
+const courseSchema = new Schema<Course>(
+  {
+    name: { type: String, required: true },
+    code: { type: String, required: true },
+    programID: { type: String, required: true },
+  },
+  { versionKey: false }
+);
 
 export const Course = model("Course", courseSchema);
 

@@ -8,12 +8,15 @@ export interface Program extends Document {
   numOfSemesters?: number;
 }
 
-const programSchema = new Schema<Program>({
-  name: { type: String, required: true },
-  collegeID: { type: Schema.Types.ObjectId, ref: "College", required: true },
-  code: { type: String, required: true },
-  numOfSemesters: { type: Number, required: false },
-});
+const programSchema = new Schema<Program>(
+  {
+    name: { type: String, required: true },
+    collegeID: { type: Schema.Types.ObjectId, ref: "College", required: true },
+    code: { type: String, required: true },
+    numOfSemesters: { type: Number, required: false },
+  },
+  { versionKey: false }
+);
 
 export const Program = model("Program", programSchema);
 

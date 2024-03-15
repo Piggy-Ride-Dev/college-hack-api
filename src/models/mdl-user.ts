@@ -27,15 +27,18 @@ export interface UserUpdate {
   picture?: string;
 }
 
-const userSchema = new Schema<User>({
-  name: { type: String, required: true },
-  lastname: { type: String, required: true },
-  picture: { type: String, required: false },
-  googleId: { type: String, required: true },
-  email: { type: String, required: true },
-  college: { type: Schema.Types.ObjectId, required: false },
-  program: { type: Schema.Types.ObjectId, required: false },
-});
+const userSchema = new Schema<User>(
+  {
+    name: { type: String, required: true },
+    lastname: { type: String, required: true },
+    picture: { type: String, required: false },
+    googleId: { type: String, required: true },
+    email: { type: String, required: true },
+    college: { type: Schema.Types.ObjectId, required: false },
+    program: { type: Schema.Types.ObjectId, required: false },
+  },
+  { versionKey: false }
+);
 
 export const User = model("User", userSchema);
 
@@ -52,5 +55,5 @@ export function getByEmail(email: string): Promise<User | null> {
 }
 
 export function update(id: string, user: UserUpdate): Promise<User | null> {
-  return User.findByIdAndUpdate(id, user).populate("college").populate("program");
+  return User.findByIdAndUpdate(id, user, { new: true }).populate("college").populate("program");
 }
