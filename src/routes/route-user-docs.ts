@@ -5,7 +5,7 @@
  *     User:
  *       type: object
  *       properties:
- *         id:
+ *         _id:
  *           type: string
  *           description: The user's unique identifier
  *         name:

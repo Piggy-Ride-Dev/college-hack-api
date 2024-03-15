@@ -5,7 +5,7 @@
  *     College:
  *       type: object
  *       properties:
- *         id:
+ *         _id:
  *           type: string
  *           description: Unique identifier for the college
  *         name:
@@ -14,7 +14,7 @@
  *     Program:
  *       type: object
  *       properties:
- *         id:
+ *         _id:
  *           type: string
  *           description: Unique identifier for the program
  *         name:
