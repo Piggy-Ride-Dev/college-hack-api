@@ -45,16 +45,19 @@
  *     UserUpdate:
  *       type: object
  *       properties:
- *         name:
- *           type: string
- *         lastname:
- *           type: string
- *         college:
- *           type: string
- *         program:
- *           type: string
- *         picture:
- *           type: string
+ *         user:
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *             lastname:
+ *               type: string
+ *             college:
+ *               type: string
+ *             program:
+ *               type: string
+ *             picture:
+ *               type: string
  *
  * /user/:
  *   get:
